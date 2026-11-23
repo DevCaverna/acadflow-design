@@ -34,16 +34,42 @@ flowchart LR
   - `acadflow-icone-simples.svg`: versão sem escrita, para tamanhos abaixo de 64 px
   - PNGs em 1024, 512, 192, 180 (Apple), 32 e 16 px (32 e 16 usam a versão simples)
 - `design-files/`: código-fonte de todas as telas do canvas (um arquivo `.dc.html` por quadro) e `canvas.json` (páginas, posições e notas)
+- `telas/`: cópia das mesmas telas separadas por página, só para consulta; para reabrir ou editar no canvas, use `design-files/`
 
-## Organização (páginas)
+## Páginas e quadros
 
-1. **Capa e ícone:** Main, Icone, LogoMark (componente)
-2. **Fundamentos e componentes:** Fundamentos (cores, tipografia, espaçamento), Componentes, Sidebar (componente)
-3. **Fluxos:** FluxoAuth, FluxoProfessor, FluxoAluno
-4. **Autenticação:** Login, LoginCarregando, LoginErro, Cadastro
-5. **Professor:** ProfPainel, ProfDisciplinas, ProfAtividades, ProfNotas, ProfPainelSkeleton, ProfPainelVazio, ProfNovaAtividade
-6. **Aluno:** AlunoPainel, AlunoNotas, AlunoPainelSkeleton, AlunoPainelErro
-7. **Erros e feedback:** Erro404, Erro403, Erro500, SemConexao, SessaoExpirada, Feedback
+| Página | Quadros |
+| --- | --- |
+| 01 · Capa, ícone e escopo | Main (capa), Icone, LogoMark, **EscopoMVP** |
+| 02 · Fundamentos e componentes | Fundamentos, Componentes, Sidebar, **Avisos** |
+| 03 · Fluxos e dados | FluxoAuth, FluxoProfessor, FluxoAluno, **ModeloDados** |
+| 04 · Home pública e autenticação | **Landing** (home antes do login), Login, LoginCarregando, LoginErro, Cadastro |
+| 05 · Professor | **ProfHome** (início), ProfPainel (visão geral), ProfDisciplinas, ProfAtividades, ProfNotas, ProfPainelSkeleton, ProfPainelVazio, ProfNovaAtividade, **ProfPainelAvisos** |
+| 06 · Aluno | **AlunoHome** (início), AlunoPainel (visão geral), AlunoNotas, AlunoPainelSkeleton, AlunoPainelErro, **AlunoPainelAvisos**, **Perfil** |
+| 07 · Erros e feedback | Erro404, Erro403, Erro500, SemConexao, SessaoExpirada, Feedback |
+
+Em negrito, os quadros novos desta versão.
+
+## Novidades da v1.2
+
+- **Home pública (Landing):** a página antes do login. Apresenta o AcadFlow, tem uma seção para professores e outra para alunos, mostra como funciona e leva para Entrar ou Criar conta de aluno.
+- **Início do professor (ProfHome):** a primeira tela depois do login. Traz atalhos (lançar notas, nova atividade, nova disciplina), "continue de onde parou", a agenda da semana e as turmas.
+- **Início do aluno (AlunoHome):** a primeira tela depois do login. Mostra o próximo prazo em destaque, a nota mais recente, as disciplinas com média parcial e os prazos dos próximos 14 dias.
+- Os painéis anteriores passaram a se chamar **Visão geral** no menu. O botão "Entrar" e o fluxo de autenticação agora levam para a home.
+
+## O que mudou para seguir o modelo do MVP (v1.1)
+
+- **Cadastro:** cria sempre conta de ALUNO. Saiu a escolha de perfil; professores e matrículas vêm do seed.
+- **Atividades:** sem rascunho nem "publicada". A atividade aparece para os alunos assim que é criada. Os status viraram "Aberta", "Vence em X dias" e "Prazo encerrado". Data limite e descrição são opcionais.
+- **Disciplinas:** o modal ganhou Código e Semestre, que não podem se repetir. Disciplina com histórico não pode ser excluída (diálogo de bloqueio em Feedback).
+- **Notas:** "—" significa sem nota. Não conta na média e nunca é salvo como 0. A coluna agora é "Média parcial", e há um aluno exemplo com "Sem notas". Fica explícito que salvar pode ser repetido com segurança (PUT idempotente).
+- **Aluno:** média e situação aparecem como **parciais** enquanto falta nota, com a contagem de atividades corrigidas.
+- **Excluir atividade:** a confirmação avisa que as notas são removidas juntas, numa única operação.
+- **Sino de avisos (opcional):** derivado de prazos (até 7 dias) e notas recentes. Não tem estado lido/não lido, histórico nem push. Para o professor, mostra "vence esta semana".
+- **Meu perfil (opcional):** nome, e-mail e troca de senha. O perfil de acesso não pode ser alterado.
+- **Modelo de dados:** diagrama das 5 tabelas (users, disciplines, enrollments, activities, grades) com chaves, UNIQUE e regras.
+- **Escopo do MVP:** o fluxo que precisa funcionar, o que entra, o que é opcional, o que fica fora e o mapa tela × rota da API.
+- **Validação:** um catálogo de mensagens de erro foi adicionado em Feedback.
 
 ## Tokens principais
 
@@ -58,7 +84,7 @@ flowchart LR
 | Fontes | Space Grotesk (títulos), Inter (interface), Caveat (só no ícone) |
 | Raios | 6 campo · 10 botão · 14 card · 999 pílula |
 
-Regra de situação usada: média ≥ 7,0 Aprovado · 5,0 a 6,9 Recuperação · < 5,0 Reprovado.
+Situação: média ≥ 7,0 Aprovado · 5,0 a 6,9 Recuperação · < 5,0 Reprovado · sem nota lançada = Sem notas. A média é arredondada para uma casa uma única vez, e esse valor define a situação.
 
 ## Observação
 
@@ -69,7 +95,8 @@ Os arquivos `.dc.html` são o formato do canvas de design do Claude. Eles depend
 | Página | O que tem |
 | --- | --- |
 | [Linear](https://linear.app/acadflow/document/acadflow-inicio-e-documentacao-9f01545a3125) | Início e documentação do projeto |
-| [Telas](design-files/) | Fonte das telas e índice do canvas |
+| [Canvas](design-files/) | Fonte das telas e índice do canvas |
+| [Telas](telas/) | Telas separadas por página, para consulta |
 | [Ícone](icone/) | Ícone em SVG e PNG |
 
 ## Repositórios

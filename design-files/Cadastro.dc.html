@@ -22,7 +22,7 @@ a{color:#2E43C8}a:hover{color:#2436A8}
     </div>
     <div style="display: flex; flex-direction: column; gap: 20px; max-width: 460px">
       <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 44px; line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">Conectando professores e alunos.</h2>
-      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #C9D0F5">Escolha seu perfil: ele define o que você vê e o que pode fazer no sistema.</p>
+      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #C9D0F5">Crie sua conta de aluno para acompanhar disciplinas, atividades e notas. Sua matrícula nas disciplinas é feita pela instituição.</p>
     </div>
     <p style="margin: 0; font-size: 13px; color: #A9AEC0">Sua senha é protegida com hash e nunca fica salva em texto.</p>
   </div>
@@ -30,21 +30,14 @@ a{color:#2E43C8}a:hover{color:#2436A8}
   <div style="flex: 1 1 520px; display: flex; align-items: center; justify-content: center; padding: 56px 24px; box-sizing: border-box">
     <form style="width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 20px">
       <div style="display: flex; flex-direction: column; gap: 8px">
-        <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">Criar conta</h1>
+        <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">Criar conta de aluno</h1>
         <p style="margin: 0; font-size: 15px; color: #5A6072">Leva menos de um minuto.</p>
       </div>
 
-      <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
-        <legend style="font-size: 14px; font-weight: 600; margin-bottom: 8px; padding: 0">Eu sou</legend>
-        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
-          <sc-for list="{{ perfis }}" as="p" hint-placeholder-count="2">
-            <label style="display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 12px; border: {{ p.borda }}; background: {{ p.fundo }}; cursor: pointer">
-              <input type="radio" name="perfil" checked="{{ p.on }}" onChange="{{ p.pick }}" style="margin: 3px 0 0; width: 18px; height: 18px; accent-color: #2E43C8">
-              <span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 15px; font-weight: 600">{{ p.nome }}</span><span style="font-size: 13px; line-height: 18px; color: #5A6072">{{ p.desc }}</span></span>
-            </label>
-          </sc-for>
-        </div>
-      </fieldset>
+      <div role="note" style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; background: #EEF0FC; color: #1C2A8C">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; flex: 0 0 20px"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7h.01"></path></svg>
+        <span style="font-size: 14px; line-height: 20px">Este cadastro cria uma conta de <b>aluno</b>. Contas de professor são criadas pela coordenação.</span>
+      </div>
 
       <div style="display: flex; flex-direction: column; gap: 6px">
         <label for="cad-nome" style="font-size: 14px; font-weight: 600">Nome completo</label>
@@ -82,27 +75,8 @@ a{color:#2E43C8}a:hover{color:#2436A8}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
 class Component extends DCLogic {
-  constructor(props) {
-    super(props);
-    this.state = { perfil: 'ALUNO' };
-  }
   renderVals() {
-    const lista = [
-      { id: 'PROFESSOR', nome: 'Professor', desc: 'Cadastro disciplinas, atividades e notas.' },
-      { id: 'ALUNO', nome: 'Aluno', desc: 'Acompanho minhas notas e média.' }
-    ];
-    return {
-      perfis: lista.map((p) => {
-        const on = this.state.perfil === p.id;
-        return {
-          ...p,
-          on: on,
-          borda: on ? '2px solid #2E43C8' : '1px solid #C9CDDA',
-          fundo: on ? '#EEF0FC' : '#FFFFFF',
-          pick: () => this.setState({ perfil: p.id })
-        };
-      })
-    };
+    return {};
   }
 }
 </script>

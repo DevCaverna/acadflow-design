@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Avisos recentes</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div role="region" aria-label="Avisos recentes" style="width: 380px; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; box-shadow: 0 16px 40px rgba(21,24,38,0.16); font-family: Inter, sans-serif; color: #151826; overflow: hidden">
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-bottom: 1px solid #E4E6EE">
+    <span style="font-size: 16px; font-weight: 600">Avisos recentes</span>
+    <span style="font-size: 12px; color: #5A6072">{{ sub }}</span>
+  </div>
+  <sc-if value="{{ temItens }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <sc-for list="{{ itens }}" as="i" hint-placeholder-count="3">
+        <a href="{{ i.rota }}" style="display: flex; gap: 12px; padding: 14px 18px; border-bottom: 1px solid #F0F1F5; text-decoration: none; color: #151826">
+          <span style="width: 32px; height: 32px; border-radius: 999px; background: {{ i.bg }}; color: {{ i.cor }}; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 32px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round"><path d="{{ i.icon }}"></path></svg></span>
+          <span style="display: flex; flex-direction: column; gap: 3px; min-width: 0"><span style="font-size: 14px; line-height: 20px">{{ i.texto }}</span><span style="font-size: 12px; color: #5A6072">{{ i.meta }}</span></span>
+        </a>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ vazio }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 32px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px">
+      <span style="width: 44px; height: 44px; border-radius: 999px; background: #F5F6FA; color: #5A6072; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"></path></svg></span>
+      <span style="font-size: 15px; font-weight: 600">Nenhum aviso agora</span>
+      <span style="font-size: 13px; line-height: 1.5; color: #5A6072">Prazos dos próximos 7 dias e notas recentes aparecem aqui.</span>
+    </div>
+  </sc-if>
+  <div style="padding: 12px 18px; background: #F9FAFC; font-size: 12px; line-height: 1.5; color: #5A6072">Gerados a partir de prazos e notas. Atualizados ao abrir o sino.</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"perfil":{"editor":"enum","options":["aluno","professor"],"default":"aluno"},"vazio":{"editor":"boolean","default":false},"$preview":{"width":380,"height":380}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const perfil = this.props.perfil ?? 'aluno';
+    const vazio = this.props.vazio ?? false;
+    const prazo = { bg: '#FDF3E1', cor: '#8A5300', icon: 'M12 7v5l3 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z' };
+    const nota = { bg: '#E6F4EC', cor: '#1C7A4A', icon: 'M4 20V11M10 20V5M16 20v-6M3 20h18' };
+    const aluno = [
+      { ...prazo, texto: 'Lista 3 — Consultas SQL vence em 5 dias', meta: 'Banco de Dados · prazo 28 nov', rota: '/AlunoNotas.dc.html' },
+      { ...nota, texto: 'Sua nota de Lista 2 — Normalização foi lançada', meta: 'Banco de Dados · atualizada há 2 h', rota: '/AlunoNotas.dc.html' },
+      { ...prazo, texto: 'Trabalho prático: API REST vence em 9 dias', meta: 'Desenvolvimento Web · prazo 02 dez', rota: '/AlunoNotas.dc.html' }
+    ];
+    const prof = [
+      { ...prazo, texto: 'Lista 3 — Consultas SQL vence esta semana', meta: 'Banco de Dados · prazo 28 nov', rota: '/ProfAtividades.dc.html' }
+    ];
+    const itens = vazio ? [] : (perfil === 'professor' ? prof : aluno);
+    return {
+      itens: itens,
+      temItens: itens.length > 0,
+      vazio: itens.length === 0,
+      sub: itens.length === 1 ? '1 aviso' : itens.length + ' avisos'
+    };
+  }
+}
+</script>
+</body>
+</html>

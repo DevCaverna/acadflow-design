@@ -24,7 +24,7 @@ a{color:#2E43C8}a:hover{color:#2436A8}
       <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
         <div style="display: flex; flex-direction: column; gap: 6px">
           <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 40px; font-weight: 700">Lançar notas</h1>
-          <span style="font-size: 14px; color: #5A6072">Banco de Dados · notas de 0 a 10, com uma casa decimal · média simples das atividades</span>
+          <span style="font-size: 14px; color: #5A6072">Banco de Dados · notas de 0,0 a 10,0 com uma casa decimal · média das notas lançadas</span>
         </div>
         <div style="display: flex; gap: 12px; align-items: center">
           <label for="filtro-sit" style="font-size: 14px; color: #5A6072">Mostrar</label>
@@ -47,8 +47,8 @@ a{color:#2E43C8}a:hover{color:#2436A8}
                 <sc-for list="{{ colunas }}" as="c" hint-placeholder-count="4">
                   <th scope="col" style="padding: 14px 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072; text-align: center">{{ c }}</th>
                 </sc-for>
-                <th scope="col" style="padding: 14px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072; text-align: center">Média</th>
-                <th scope="col" style="padding: 14px 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Situação</th>
+                <th scope="col" style="padding: 14px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072; text-align: center">Média parcial</th>
+                <th scope="col" style="padding: 14px 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Situação parcial</th>
               </tr>
             </thead>
             <tbody>
@@ -70,6 +70,8 @@ a{color:#2E43C8}a:hover{color:#2436A8}
         </div>
       </section>
 
+      <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #5A6072">“—” = sem nota: não conta na média e nunca é salvo como 0. A média é arredondada para uma casa e esse mesmo valor define a situação (7,0 = aprovado). Salvar envia só as notas alteradas e é seguro repetir.</p>
+
       <div style="position: sticky; bottom: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 20px; background: #151826; color: #FFFFFF; border-radius: 14px; box-shadow: 0 12px 32px rgba(21,24,38,0.24)">
         <span style="font-size: 14px">3 alterações não salvas</span>
         <div style="display: flex; gap: 12px">
@@ -90,7 +92,8 @@ class Component extends DCLogic {
       ap: { sit: 'Aprovado', sbg: '#E6F4EC', scor: '#1C7A4A' },
       rec: { sit: 'Recuperação', sbg: '#FDF3E1', scor: '#8A5300' },
       rep: { sit: 'Reprovado', sbg: '#FCE9E7', scor: '#C0322A' },
-      err: { sit: 'Corrigir nota', sbg: '#FCE9E7', scor: '#C0322A' }
+      err: { sit: 'Corrigir nota', sbg: '#FCE9E7', scor: '#C0322A' },
+      sem: { sit: 'Sem notas', sbg: '#F5F6FA', scor: '#5A6072' }
     };
     const dados = [
       ['Ana Souza', ['7,0', '5,5', '6,0', ''], '6,2', 'rec'],
@@ -100,7 +103,8 @@ class Component extends DCLogic {
       ['Elisa Nunes', ['8,0', '7,0', '7,5', ''], '7,5', 'ap'],
       ['Felipe Araújo', ['7,0', '6,5', '7,2', ''], '6,9', 'rec'],
       ['Gabriel Torres', ['4,0', '3,0', '5,0', ''], '4,0', 'rep'],
-      ['Helena Prado', ['10,0', '9,0', '', ''], '9,5', 'ap']
+      ['Helena Prado', ['10,0', '9,0', '', ''], '9,5', 'ap'],
+      ['Igor Batista', ['', '', '', ''], '—', 'sem']
     ];
     const linhas = dados.map(([nome, notas, media, s]) => ({
       nome: nome,

@@ -16,7 +16,7 @@ a{color:#2E43C8}a:hover{color:#2436A8}
 .af-spin{animation:af-spin .8s linear infinite}
 </style>
 </helmet>
-<div style="width: 1440px; height: 1180px; box-sizing: border-box; padding: 80px; background: #F5F6FA; color: #151826; font-family: Inter, sans-serif; display: flex; flex-direction: column; gap: 40px">
+<div style="width: 1440px; height: 1500px; box-sizing: border-box; padding: 80px; background: #F5F6FA; color: #151826; font-family: Inter, sans-serif; display: flex; flex-direction: column; gap: 40px">
   <div style="display: flex; flex-direction: column; gap: 8px">
     <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">07 · Feedback</span>
     <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700">Toasts, diálogos, carregamento e estados vazios</h1>
@@ -38,12 +38,34 @@ a{color:#2E43C8}a:hover{color:#2436A8}
       <div role="alertdialog" aria-modal="true" aria-labelledby="ex-titulo" aria-describedby="ex-texto" style="width: 100%; max-width: 440px; background: #FFFFFF; border-radius: 16px; box-shadow: 0 24px 64px rgba(21,24,38,0.2); padding: 28px; display: flex; flex-direction: column; gap: 14px">
         <span style="width: 48px; height: 48px; border-radius: 999px; background: #FCE9E7; color: #C0322A; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></span>
         <h2 id="ex-titulo" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Excluir atividade?</h2>
-        <p id="ex-texto" style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A6072">“Lista 2 — Normalização” e as 18 notas lançadas serão removidas. As médias dos alunos serão recalculadas. Esta ação não pode ser desfeita.</p>
+        <p id="ex-texto" style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A6072">“Lista 2 — Normalização” e as 18 notas lançadas serão removidas juntas, numa única operação. As médias dos alunos serão recalculadas. Esta ação não pode ser desfeita.</p>
         <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px">
           <a href="/ProfAtividades.dc.html" style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; font-weight: 600; font-size: 15px; color: #151826; display: inline-flex; align-items: center; text-decoration: none">Cancelar</a>
           <a href="/ProfAtividades.dc.html" style="height: 44px; padding: 0 18px; border-radius: 10px; background: #C0322A; color: #FFFFFF; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; text-decoration: none">Excluir atividade</a>
         </div>
       </div>
+    </section>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+    <section style="background: #E9EBF2; border-radius: 16px; padding: 32px; display: flex; align-items: center; justify-content: center">
+      <div role="alertdialog" aria-modal="true" aria-labelledby="bl-titulo" aria-describedby="bl-texto" style="width: 100%; max-width: 440px; background: #FFFFFF; border-radius: 16px; box-shadow: 0 24px 64px rgba(21,24,38,0.2); padding: 28px; display: flex; flex-direction: column; gap: 14px">
+        <span style="width: 48px; height: 48px; border-radius: 999px; background: #FDF3E1; color: #8A5300; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg></span>
+        <h2 id="bl-titulo" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Não é possível excluir esta disciplina</h2>
+        <p id="bl-texto" style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A6072">“Banco de Dados” tem 32 alunos matriculados, 5 atividades e notas lançadas. Para proteger o histórico acadêmico, a exclusão fica bloqueada.</p>
+        <div style="display: flex; justify-content: flex-end; margin-top: 8px">
+          <a href="/ProfDisciplinas.dc.html" style="height: 44px; padding: 0 18px; border-radius: 10px; background: #2E43C8; color: #FFFFFF; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; text-decoration: none">Entendi</a>
+        </div>
+      </div>
+    </section>
+    <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Mensagens de validação</h2>
+      <sc-for list="{{ validacoes }}" as="m" hint-placeholder-count="6">
+        <div style="display: flex; gap: 12px; align-items: baseline; border-bottom: 1px solid #F0F1F5; padding-bottom: 12px">
+          <span style="flex: 0 0 160px; font-size: 13px; font-weight: 600; color: #5A6072">{{ m.campo }}</span>
+          <span style="font-size: 14px; color: #C0322A">{{ m.msg }}</span>
+        </div>
+      </sc-for>
     </section>
   </div>
 
@@ -81,19 +103,27 @@ a{color:#2E43C8}a:hover{color:#2436A8}
   </section>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1180}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
 class Component extends DCLogic {
   renderVals() {
     return {
       toasts: [
-        { titulo: 'Atividade criada', texto: '“Lista 4 — Índices e transações” foi publicada.', bg: '#E6F4EC', cor: '#1C7A4A', icon: 'M5 12l5 5L20 7' },
+        { titulo: 'Atividade criada', texto: '“Lista 4 — Índices e transações” já aparece para os alunos.', bg: '#E6F4EC', cor: '#1C7A4A', icon: 'M5 12l5 5L20 7' },
         { titulo: 'Notas salvas', texto: 'Médias e situações foram recalculadas.', bg: '#E6F4EC', cor: '#1C7A4A', icon: 'M5 12l5 5L20 7' },
         { titulo: 'Não foi possível salvar', texto: 'Verifique sua conexão e tente de novo.', bg: '#FCE9E7', cor: '#C0322A', icon: 'M12 6v7M12 18h.01' },
         { titulo: 'Atividade excluída', texto: 'A média dos alunos foi atualizada.', bg: '#EEF0FC', cor: '#2E43C8', icon: 'M12 11v6M12 7h.01' }
       ],
+      validacoes: [
+        { campo: 'Nota', msg: 'A nota deve estar entre 0,0 e 10,0.' },
+        { campo: 'Nota', msg: 'Use no máximo uma casa decimal.' },
+        { campo: 'E-mail (cadastro)', msg: 'Já existe uma conta com este e-mail.' },
+        { campo: 'Disciplina', msg: 'Já existe BD-204 no semestre 2026.2.' },
+        { campo: 'Título', msg: 'Informe o título da atividade.' },
+        { campo: 'Senha', msg: 'Use pelo menos 8 caracteres.' }
+      ],
       vazios: [
         { titulo: 'Nenhuma atividade ainda', texto: 'Crie a primeira atividade desta disciplina para começar a lançar notas.', acao: 'Nova atividade', icon: 'M9 3h6v4H9zM7 5H5v16h14V5h-2M12 11v6M9 14h6' },
-        { titulo: 'Sem notas lançadas', texto: 'Seu professor ainda não lançou notas nesta disciplina. Volte depois.', acao: 'Ver atividades', icon: 'M4 20V11M10 20V5M16 20v-6M3 20h18' },
+        { titulo: 'Sem notas ainda', texto: 'Nenhuma atividade foi corrigida nesta disciplina. Sua média aparece quando houver a primeira nota.', acao: 'Ver atividades', icon: 'M4 20V11M10 20V5M16 20v-6M3 20h18' },
         { titulo: 'Nenhum resultado', texto: 'Nenhuma disciplina corresponde a “química”. Tente outro nome ou código.', acao: 'Limpar busca', icon: 'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4' }
       ]
     };

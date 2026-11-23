@@ -39,7 +39,7 @@ a{color:#2E43C8}a:hover{color:#2436A8}
           </div>
           <div style="display: flex; align-items: center; gap: 20px">
             <div role="img" aria-label="Média {{ d.media }} de 10" style="width: 112px; height: 112px; border-radius: 999px; background: conic-gradient({{ d.barra }} {{ d.graus }}, #F0F1F5 0); display: flex; align-items: center; justify-content: center; flex: 0 0 112px">
-              <span style="width: 88px; height: 88px; border-radius: 999px; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700; line-height: 1">{{ d.media }}</span><span style="font-size: 11px; color: #5A6072">média</span></span>
+              <span style="width: 88px; height: 88px; border-radius: 999px; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 30px; font-weight: 700; line-height: 1">{{ d.media }}</span><span style="font-size: 11px; color: #5A6072">{{ d.rotuloMedia }}</span></span>
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px">
               <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: {{ d.bg }}; color: {{ d.cor }}; font-size: 13px; font-weight: 600">{{ d.sit }}</span>
@@ -50,6 +50,7 @@ a{color:#2E43C8}a:hover{color:#2436A8}
             <span style="display: flex; align-items: center; gap: 8px"><span style="width: 10px; height: 10px; border-radius: 999px; background: #1C7A4A"></span>Aprovado: média ≥ 7,0</span>
             <span style="display: flex; align-items: center; gap: 8px"><span style="width: 10px; height: 10px; border-radius: 999px; background: #F2A93B"></span>Recuperação: 5,0 a 6,9</span>
             <span style="display: flex; align-items: center; gap: 8px"><span style="width: 10px; height: 10px; border-radius: 999px; background: #C0322A"></span>Reprovado: abaixo de 5,0</span>
+            <span style="line-height: 1.5">A média considera só as notas lançadas. Atividade sem nota não conta como zero.</span>
           </div>
         </section>
 
@@ -84,16 +85,16 @@ class Component extends DCLogic {
       rep: { sit: 'Reprovado', bg: '#FCE9E7', cor: '#C0322A', barra: '#C0322A' }
     };
     const nota = (titulo, data, v) => {
-      if (v === null) return { titulo, data, nota: 'Aguardando', pct: '0%', barra: '#F0F1F5', tam: '14px', corTxt: '#5A6072' };
+      if (v === null) return { titulo, data, nota: 'Sem nota', pct: '0%', barra: '#F0F1F5', tam: '14px', corTxt: '#5A6072' };
       const s = v >= 7 ? S.ap : (v >= 5 ? S.rec : S.rep);
       return { titulo, data, nota: v.toFixed(1).replace('.', ','), pct: (v * 10) + '%', barra: s.barra, tam: '20px', corTxt: '#151826' };
     };
     const lista = [
-      { nome: 'Banco de Dados', prof: 'Profa. Marina Costa', media: 6.2, msg: 'Faltam 2 atividades. Uma nota 8,0 na Lista 3 já leva sua média a 6,6.', notas: [
+      { nome: 'Banco de Dados', prof: 'Profa. Marina Costa', media: 6.2, msg: 'Uma nota 8,0 na Lista 3 leva sua média a 6,6.', notas: [
         nota('Lista 1 — Modelo ER', 'Entregue em 18 set', 7.0), nota('Prova 1', 'Realizada em 09 out', 5.5), nota('Lista 2 — Normalização', 'Entregue em 30 out', 6.0), nota('Lista 3 — Consultas SQL', 'Entrega até 28 nov', null), nota('Projeto final', 'Entrega até 12 dez', null) ] },
       { nome: 'Desenvolvimento Web', prof: 'Prof. Rafael Dias', media: 8.4, msg: 'Você está acima da média de aprovação. Continue assim.', notas: [
         nota('Landing page em React', 'Entregue em 22 set', 9.0), nota('Prova 1', 'Realizada em 16 out', 7.6), nota('CRUD com NestJS', 'Entregue em 06 nov', 8.6), nota('Trabalho prático: API REST', 'Entrega até 02 dez', null) ] },
-      { nome: 'Engenharia de Software', prof: 'Profa. Marina Costa', media: 7.8, msg: 'Aprovada até aqui. Ainda há 2 atividades no semestre.', notas: [
+      { nome: 'Engenharia de Software', prof: 'Profa. Marina Costa', media: 7.8, msg: 'Acima de 7,0 até aqui.', notas: [
         nota('Documento de requisitos', 'Entregue em 15 set', 8.0), nota('Prova 1', 'Realizada em 08 out', 7.0), nota('Plano de testes', 'Entregue em 27 out', 8.2), nota('Sprint review', 'Entregue em 10 nov', 8.0), nota('Diagrama de casos de uso', 'Entrega até 05 dez', null) ] },
       { nome: 'Algoritmos e Estruturas de Dados', prof: 'Prof. Paulo Reis', media: 7.2, msg: 'Aprovada por pouco: atenção à Prova 2.', notas: [
         nota('Lista de recursão', 'Entregue em 12 set', 8.0), nota('Prova 1', 'Realizada em 14 out', 6.0), nota('Árvores binárias', 'Entregue em 04 nov', 7.6), nota('Prova 2', 'Agendada para 10 dez', null) ] }
@@ -101,7 +102,13 @@ class Component extends DCLogic {
     const i = this.state.sel;
     const raw = lista[i];
     const s = raw.media >= 7 ? S.ap : (raw.media >= 5 ? S.rec : S.rep);
-    const d = { ...raw, ...s, media: raw.media.toFixed(1).replace('.', ','), graus: Math.round(raw.media * 36) + 'deg' };
+    const faltam = raw.notas.filter((n) => n.nota === 'Sem nota').length;
+    const parcial = faltam > 0;
+    const d = { ...raw, ...s,
+      sit: parcial ? s.sit + ' (parcial)' : s.sit,
+      rotuloMedia: parcial ? 'média parcial' : 'média final',
+      msg: raw.msg + (parcial ? ' Situação parcial: ' + faltam + (faltam === 1 ? ' atividade ainda sem nota.' : ' atividades ainda sem nota.') : ''),
+      media: raw.media.toFixed(1).replace('.', ','), graus: Math.round(raw.media * 36) + 'deg' };
     return {
       d: d,
       abas: lista.map((x, k) => ({

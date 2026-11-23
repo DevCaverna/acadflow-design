@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Início do aluno</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#2E43C8}a:hover{color:#2436A8}
+</style>
+</helmet>
+<div style="min-height: 1000px; display: flex; flex-wrap: wrap; background: #F5F6FA; font-family: Inter, sans-serif; color: #151826">
+  <div style="flex: 1 1 248px; max-width: 100%; background: #FFFFFF; border-right: 1px solid #E4E6EE">
+    <dc-import name="Sidebar" perfil="aluno" ativo="inicio" hint-size="100%,860px"></dc-import>
+  </div>
+  <main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 48px; box-sizing: border-box">
+    <div style="max-width: 1200px; display: flex; flex-direction: column; gap: 28px">
+      <header style="display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 14px; color: #5A6072">Segunda-feira, 23 de novembro</span>
+        <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 40px; font-weight: 700">Boa tarde, Ana</h1>
+        <p style="margin: 0; font-size: 16px; color: #5A6072">Seu próximo prazo é <b style="color: #151826">sábado</b> e saiu <b style="color: #151826">1 nota nova</b>.</p>
+      </header>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 20px">
+        <section style="flex: 3 1 420px; min-width: 0; background: #2E43C8; color: #FFFFFF; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #DDE2FA">Próximo prazo</span>
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px; line-height: 1.2; font-weight: 700">Lista 3 — Consultas SQL</h2>
+            <span style="font-size: 15px; color: #DDE2FA">Banco de Dados · até sábado, 28 nov · faltam 5 dias</span>
+          </div>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #FFFFFF; max-width: 560px">JOIN, GROUP BY e subconsultas. Siga as instruções da professora para a entrega.</p>
+          <a href="/AlunoNotas.dc.html" style="align-self: flex-start; height: 44px; padding: 0 18px; border-radius: 10px; background: #FFFFFF; color: #151826; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; text-decoration: none">Ver disciplina</a>
+        </section>
+        <section style="flex: 2 1 280px; min-width: 0; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">Nota nova</span>
+          <div style="display: flex; align-items: baseline; gap: 8px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 44px; line-height: 1; font-weight: 700">6,0</span><span style="font-size: 14px; color: #5A6072">/ 10</span></div>
+          <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 16px; font-weight: 600">Lista 2 — Normalização</span><span style="font-size: 13px; color: #5A6072">Banco de Dados · lançada há 2 h</span></div>
+          <span style="font-size: 14px; line-height: 1.5; color: #8A5300">Sua média parcial nesta disciplina ficou em 6,2.</span>
+          <a href="/AlunoNotas.dc.html" style="font-size: 14px; font-weight: 600; text-decoration: none">Ver todas as notas</a>
+        </section>
+      </div>
+
+      <section style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Minhas disciplinas</h2>
+          <a href="/AlunoPainel.dc.html" style="font-size: 14px; font-weight: 600; text-decoration: none">Ver visão geral</a>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px">
+          <sc-for list="{{ disc }}" as="d" hint-placeholder-count="4">
+            <a href="/AlunoNotas.dc.html" style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; color: #151826">
+              <span style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><span style="font-size: 15px; font-weight: 600">{{ d.nome }}</span><span style="align-self: flex-start; display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 999px; background: {{ d.bg }}; color: {{ d.cor }}; font-size: 12px; font-weight: 600">{{ d.sit }}</span></span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700">{{ d.media }}</span>
+            </a>
+          </sc-for>
+        </div>
+        <span style="font-size: 13px; color: #5A6072">Médias parciais: consideram só as atividades já corrigidas.</span>
+      </section>
+
+      <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; overflow: hidden">
+        <div style="padding: 20px 24px; border-bottom: 1px solid #E4E6EE"><h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Próximos 14 dias</h2></div>
+        <sc-for list="{{ prazos }}" as="p" hint-placeholder-count="3">
+          <div style="display: flex; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid #F0F1F5">
+            <span style="width: 64px; font-size: 13px; font-weight: 600; color: {{ p.corDia }}">{{ p.dia }}</span>
+            <span style="display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto; min-width: 0"><span style="font-size: 15px; font-weight: 600">{{ p.t }}</span><span style="font-size: 13px; color: #5A6072">{{ p.d }}</span></span>
+          </div>
+        </sc-for>
+      </section>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const ap = { sit: 'Aprovado (parcial)', bg: '#E6F4EC', cor: '#1C7A4A' };
+    const rec = { sit: 'Recuperação (parcial)', bg: '#FDF3E1', cor: '#8A5300' };
+    return {
+      disc: [
+        { nome: 'Banco de Dados', media: '6,2', ...rec },
+        { nome: 'Desenvolvimento Web', media: '8,4', ...ap },
+        { nome: 'Engenharia de Software', media: '7,8', ...ap },
+        { nome: 'Algoritmos e Estruturas de Dados', media: '7,2', ...ap }
+      ],
+      prazos: [
+        { dia: 'Sáb 28', corDia: '#8A5300', t: 'Lista 3 — Consultas SQL', d: 'Banco de Dados' },
+        { dia: 'Qua 02', corDia: '#2E43C8', t: 'Trabalho prático: API REST', d: 'Desenvolvimento Web' },
+        { dia: 'Sáb 05', corDia: '#2E43C8', t: 'Diagrama de casos de uso', d: 'Engenharia de Software' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

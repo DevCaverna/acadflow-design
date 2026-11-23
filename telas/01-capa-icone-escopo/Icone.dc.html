@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>AcadFlow — Ícone do projeto</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#2E43C8}a:hover{color:#2436A8}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; box-sizing: border-box; padding: 80px; background: #F5F6FA; color: #151826; font-family: Inter, sans-serif; display: flex; gap: 64px">
+  <div style="display: flex; flex-direction: column; gap: 20px; flex: 0 0 560px">
+    <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">Ícone principal</span>
+    <div style="width: 560px; height: 560px; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 24px; display: flex; align-items: center; justify-content: center">
+      <dc-import name="LogoMark" tamanho="{{ 400 }}" hint-size="400px,400px"></dc-import>
+    </div>
+    <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #5A6072">Livro aberto com uma caneta escrevendo “Acad”. Base 512 × 512, cantos de 116 px (22,6%). Exportar em 1024, 512, 192, 180 (Apple), 32 e 16 px.</p>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 40px; flex: 1 1 auto; min-width: 0">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; line-height: 1.1; font-weight: 700">Ícone do projeto</h1>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #5A6072; max-width: 620px">O livro representa a aprendizagem; a escrita, o registro de atividades e notas; a caneta âmbar dá o ponto de atenção da marca. Azul tinta transmite organização e confiança.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">Tamanhos</span>
+      <div style="display: flex; align-items: flex-end; gap: 32px; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 28px">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px"><dc-import name="LogoMark" tamanho="{{ 128 }}" hint-size="128px,128px"></dc-import><span style="font-size: 12px; color: #5A6072">128</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px"><dc-import name="LogoMark" tamanho="{{ 64 }}" hint-size="64px,64px"></dc-import><span style="font-size: 12px; color: #5A6072">64</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px"><dc-import name="LogoMark" tamanho="{{ 48 }}" simples="{{ true }}" hint-size="48px,48px"></dc-import><span style="font-size: 12px; color: #5A6072">48 · simples</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px"><dc-import name="LogoMark" tamanho="{{ 32 }}" simples="{{ true }}" hint-size="32px,32px"></dc-import><span style="font-size: 12px; color: #5A6072">32 · favicon</span></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px"><dc-import name="LogoMark" tamanho="{{ 16 }}" simples="{{ true }}" hint-size="16px,16px"></dc-import><span style="font-size: 12px; color: #5A6072">16</span></div>
+      </div>
+      <p style="margin: 0; font-size: 13px; color: #5A6072">Abaixo de 64 px use a versão simples (sem a escrita e as linhas), para manter a leitura.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">Variações</span>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+        <div style="display: flex; align-items: center; gap: 16px; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 20px"><dc-import name="LogoMark" tamanho="{{ 72 }}" variante="cor" hint-size="72px,72px"></dc-import><span style="font-size: 14px; font-weight: 600">Cor<br><span style="font-weight: 400; color: #5A6072">padrão</span></span></div>
+        <div style="display: flex; align-items: center; gap: 16px; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 20px"><dc-import name="LogoMark" tamanho="{{ 72 }}" variante="mono" hint-size="72px,72px"></dc-import><span style="font-size: 14px; font-weight: 600">Mono<br><span style="font-weight: 400; color: #5A6072">impressão / 1 cor</span></span></div>
+        <div style="display: flex; align-items: center; gap: 16px; background: #2E43C8; border-radius: 16px; padding: 20px; color: #FFFFFF"><dc-import name="LogoMark" tamanho="{{ 72 }}" variante="claro" hint-size="72px,72px"></dc-import><span style="font-size: 14px; font-weight: 600">Claro<br><span style="font-weight: 400; color: #DDE2FA">sobre fundo azul</span></span></div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">Assinatura</span>
+      <div style="display: flex; align-items: center; gap: 18px; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px 28px">
+        <dc-import name="LogoMark" tamanho="{{ 56 }}" hint-size="56px,56px"></dc-import>
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1">AcadFlow</span>
+          <span style="font-size: 14px; color: #5A6072">Organize disciplinas, atividades e notas.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -1,79 +1,537 @@
 {
-  "v": 3,
-  "createdOnFiles": {"v": 1, "at": "2026-11-23T16:55:00Z"},
-  "title": "AcadFlow — Design",
-  "launch": {"view": "canvas", "page": "capa"},
-  "pages": [
-    {"id": "capa", "name": "01 · Capa e ícone"},
-    {"id": "fundamentos", "name": "02 · Fundamentos e componentes"},
-    {"id": "fluxos", "name": "03 · Fluxos"},
-    {"id": "auth", "name": "04 · Autenticação"},
-    {"id": "professor", "name": "05 · Professor"},
-    {"id": "aluno", "name": "06 · Aluno"},
-    {"id": "estados", "name": "07 · Erros e feedback"}
-  ],
-  "boards": {
-    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 900, "title": "Capa", "page": "capa"},
-    "Icone.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 900, "title": "Ícone do projeto", "page": "capa"},
-    "LogoMark.dc.html": {"x": 3040, "y": 0, "w": 240, "h": 240, "title": "Componente · LogoMark", "page": "capa"},
-
-    "Fundamentos.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 1320, "title": "Cores, tipografia e espaçamento", "page": "fundamentos"},
-    "Componentes.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 1640, "title": "Componentes e estados", "page": "fundamentos"},
-    "Sidebar.dc.html": {"x": 3040, "y": 0, "w": 248, "h": 900, "title": "Componente · Sidebar", "page": "fundamentos"},
-
-    "FluxoAuth.dc.html": {"x": 0, "y": 0, "w": 1840, "h": 900, "title": "Fluxo 1 · Autenticação", "page": "fluxos"},
-    "FluxoProfessor.dc.html": {"x": 1920, "y": 0, "w": 1840, "h": 1040, "title": "Fluxo 2 · Professor", "page": "fluxos"},
-    "FluxoAluno.dc.html": {"x": 3840, "y": 0, "w": 1840, "h": 820, "title": "Fluxo 3 · Aluno", "page": "fluxos"},
-
-    "Login.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 900, "title": "Login", "page": "auth", "expand": "fill", "is_interactive": true},
-    "LoginCarregando.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 900, "title": "Login · Carregando", "page": "auth", "expand": "fill"},
-    "LoginErro.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 900, "title": "Login · Erro de credenciais", "page": "auth", "expand": "fill"},
-    "Cadastro.dc.html": {"x": 4560, "y": 0, "w": 1440, "h": 900, "title": "Cadastro", "page": "auth", "expand": "fill", "is_interactive": true},
-
-    "ProfPainel.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 1000, "title": "Professor · Painel", "page": "professor", "expand": "fill", "is_interactive": true},
-    "ProfDisciplinas.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 1000, "title": "Professor · Disciplinas", "page": "professor", "expand": "fill", "is_interactive": true},
-    "ProfAtividades.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 1000, "title": "Professor · Atividades e alunos", "page": "professor", "expand": "fill", "is_interactive": true},
-    "ProfNotas.dc.html": {"x": 4560, "y": 0, "w": 1440, "h": 1000, "title": "Professor · Lançar notas", "page": "professor", "expand": "fill", "is_interactive": true},
-    "ProfPainelSkeleton.dc.html": {"x": 0, "y": 1360, "w": 1440, "h": 1000, "title": "Professor · Painel (skeleton)", "page": "professor", "expand": "fill"},
-    "ProfPainelVazio.dc.html": {"x": 1520, "y": 1360, "w": 1440, "h": 1000, "title": "Professor · Painel (vazio)", "page": "professor", "expand": "fill"},
-    "ProfNovaAtividade.dc.html": {"x": 3040, "y": 1360, "w": 1440, "h": 1000, "title": "Professor · Modal nova atividade", "page": "professor", "expand": "fill"},
-
-    "AlunoPainel.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 1000, "title": "Aluno · Painel", "page": "aluno", "expand": "fill", "is_interactive": true},
-    "AlunoNotas.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 1000, "title": "Aluno · Notas e média", "page": "aluno", "expand": "fill", "is_interactive": true},
-    "AlunoPainelSkeleton.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 1000, "title": "Aluno · Painel (skeleton)", "page": "aluno", "expand": "fill"},
-    "AlunoPainelErro.dc.html": {"x": 4560, "y": 0, "w": 1440, "h": 1000, "title": "Aluno · Painel (erro ao carregar)", "page": "aluno", "expand": "fill"},
-
-    "Erro404.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 900, "title": "Erro 404 · Página não encontrada", "page": "estados", "expand": "fill"},
-    "Erro403.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 900, "title": "Erro 403 · Acesso restrito", "page": "estados", "expand": "fill"},
-    "Erro500.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 900, "title": "Erro 500 · Falha no servidor", "page": "estados", "expand": "fill"},
-    "SemConexao.dc.html": {"x": 4560, "y": 0, "w": 1440, "h": 900, "title": "Sem conexão", "page": "estados", "expand": "fill"},
-    "SessaoExpirada.dc.html": {"x": 0, "y": 1240, "w": 1440, "h": 1000, "title": "Sessão expirada (JWT)", "page": "estados", "expand": "fill"},
-    "Feedback.dc.html": {"x": 1520, "y": 1240, "w": 1440, "h": 1180, "title": "Toasts, diálogos, loading e vazios", "page": "estados"}
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-23T16:55:00Z"
+ },
+ "title": "AcadFlow — Design",
+ "launch": {
+  "view": "canvas",
+  "page": "capa"
+ },
+ "pages": [
+  {
+   "id": "capa",
+   "name": "01 · Capa, ícone e escopo"
   },
-  "order": [
-    "Main.dc.html", "Icone.dc.html", "LogoMark.dc.html",
-    "Fundamentos.dc.html", "Componentes.dc.html", "Sidebar.dc.html",
-    "FluxoAuth.dc.html", "FluxoProfessor.dc.html", "FluxoAluno.dc.html",
-    "Login.dc.html", "LoginCarregando.dc.html", "LoginErro.dc.html", "Cadastro.dc.html",
-    "ProfPainel.dc.html", "ProfDisciplinas.dc.html", "ProfAtividades.dc.html", "ProfNotas.dc.html",
-    "ProfPainelSkeleton.dc.html", "ProfPainelVazio.dc.html", "ProfNovaAtividade.dc.html",
-    "AlunoPainel.dc.html", "AlunoNotas.dc.html", "AlunoPainelSkeleton.dc.html", "AlunoPainelErro.dc.html",
-    "Erro404.dc.html", "Erro403.dc.html", "Erro500.dc.html", "SemConexao.dc.html",
-    "SessaoExpirada.dc.html", "Feedback.dc.html"
-  ],
-  "notes": {
-    "t-capa": {"x": 0, "y": -300, "text": "AcadFlow — Capa e identidade", "kind": "title1", "maxW": 3280, "page": "capa"},
-    "t-fund": {"x": 0, "y": -300, "text": "Fundamentos e componentes", "kind": "title1", "maxW": 3288, "page": "fundamentos"},
-    "t-fluxos": {"x": 0, "y": -300, "text": "Fluxos do usuário", "kind": "title1", "maxW": 5680, "page": "fluxos"},
-    "s-fluxos": {"x": 0, "y": 980, "text": "Legenda: cartão com borda azul = tela · cartão cinza = ação do sistema · losango âmbar = decisão · cartão azul cheio = destino final.", "w": 520, "size": "m", "fill": "blue", "page": "fluxos"},
-    "t-auth": {"x": 0, "y": -300, "text": "Autenticação · login, carregando, erro e cadastro", "kind": "title1", "maxW": 6000, "page": "auth"},
-    "s-auth": {"x": 0, "y": 960, "text": "Senha com hash bcrypt no backend; após o login o JWT carrega o perfil (PROFESSOR | ALUNO) e decide o painel. Mensagem de erro genérica de propósito: não revela se o e-mail existe.", "w": 520, "size": "m", "fill": "orange", "page": "auth"},
-    "t-prof": {"x": 0, "y": -300, "text": "Professor · telas principais", "kind": "title1", "maxW": 6000, "page": "professor"},
-    "t-prof2": {"x": 0, "y": 1060, "text": "Professor · estados (skeleton, vazio, modal)", "kind": "title1", "maxW": 4480, "page": "professor"},
-    "t-aluno": {"x": 0, "y": -300, "text": "Aluno · telas e estados", "kind": "title1", "maxW": 6000, "page": "aluno"},
-    "s-aluno": {"x": 0, "y": 1060, "text": "Regra de situação usada no design: média ≥ 7,0 Aprovado · 5,0 a 6,9 Recuperação · < 5,0 Reprovado. Ajuste se a regra da instituição for outra.", "w": 520, "size": "m", "fill": "orange", "page": "aluno"},
-    "t-estados": {"x": 0, "y": -300, "text": "Erros de sistema", "kind": "title1", "maxW": 6000, "page": "estados"},
-    "t-estados2": {"x": 0, "y": 940, "text": "Sessão e feedback", "kind": "title1", "maxW": 2960, "page": "estados"}
+  {
+   "id": "fundamentos",
+   "name": "02 · Fundamentos e componentes"
   },
-  "designSystems": []
+  {
+   "id": "fluxos",
+   "name": "03 · Fluxos e dados"
+  },
+  {
+   "id": "auth",
+   "name": "04 · Home pública e autenticação"
+  },
+  {
+   "id": "professor",
+   "name": "05 · Professor"
+  },
+  {
+   "id": "aluno",
+   "name": "06 · Aluno"
+  },
+  {
+   "id": "estados",
+   "name": "07 · Erros e feedback"
+  }
+ ],
+ "boards": {
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Capa",
+   "page": "capa"
+  },
+  "Icone.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Ícone do projeto",
+   "page": "capa"
+  },
+  "LogoMark.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 240,
+   "h": 240,
+   "title": "Componente · LogoMark",
+   "page": "capa"
+  },
+  "Fundamentos.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 1320,
+   "title": "Cores, tipografia e espaçamento",
+   "page": "fundamentos"
+  },
+  "Componentes.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 1640,
+   "title": "Componentes e estados",
+   "page": "fundamentos"
+  },
+  "Sidebar.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 248,
+   "h": 900,
+   "title": "Componente · Sidebar",
+   "page": "fundamentos"
+  },
+  "FluxoAuth.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1840,
+   "h": 900,
+   "title": "Fluxo 1 · Autenticação",
+   "page": "fluxos"
+  },
+  "FluxoProfessor.dc.html": {
+   "x": 1920,
+   "y": 0,
+   "w": 1840,
+   "h": 1040,
+   "title": "Fluxo 2 · Professor",
+   "page": "fluxos"
+  },
+  "FluxoAluno.dc.html": {
+   "x": 3840,
+   "y": 0,
+   "w": 1840,
+   "h": 820,
+   "title": "Fluxo 3 · Aluno",
+   "page": "fluxos"
+  },
+  "Login.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Login",
+   "page": "auth",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "LoginCarregando.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Login · Carregando",
+   "page": "auth",
+   "expand": "fill"
+  },
+  "LoginErro.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Login · Erro de credenciais",
+   "page": "auth",
+   "expand": "fill"
+  },
+  "Cadastro.dc.html": {
+   "x": 4560,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Cadastro (só aluno)",
+   "page": "auth",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "ProfPainel.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Professor · Visão geral",
+   "page": "professor",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "ProfDisciplinas.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Professor · Disciplinas",
+   "page": "professor",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "ProfAtividades.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Professor · Atividades e alunos",
+   "page": "professor",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "ProfNotas.dc.html": {
+   "x": 4560,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Professor · Lançar notas",
+   "page": "professor",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "ProfPainelSkeleton.dc.html": {
+   "x": 0,
+   "y": 1360,
+   "w": 1440,
+   "h": 1000,
+   "title": "Professor · Painel (skeleton)",
+   "page": "professor",
+   "expand": "fill"
+  },
+  "ProfPainelVazio.dc.html": {
+   "x": 1520,
+   "y": 1360,
+   "w": 1440,
+   "h": 1000,
+   "title": "Professor · Painel (vazio)",
+   "page": "professor",
+   "expand": "fill"
+  },
+  "ProfNovaAtividade.dc.html": {
+   "x": 3040,
+   "y": 1360,
+   "w": 1440,
+   "h": 1000,
+   "title": "Professor · Modal nova atividade",
+   "page": "professor",
+   "expand": "fill"
+  },
+  "AlunoPainel.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Aluno · Visão geral",
+   "page": "aluno",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "AlunoNotas.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Aluno · Notas e média",
+   "page": "aluno",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "AlunoPainelSkeleton.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Aluno · Painel (skeleton)",
+   "page": "aluno",
+   "expand": "fill"
+  },
+  "AlunoPainelErro.dc.html": {
+   "x": 4560,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Aluno · Painel (erro ao carregar)",
+   "page": "aluno",
+   "expand": "fill"
+  },
+  "Erro404.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Erro 404 · Página não encontrada",
+   "page": "estados",
+   "expand": "fill"
+  },
+  "Erro403.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Erro 403 · Acesso restrito",
+   "page": "estados",
+   "expand": "fill"
+  },
+  "Erro500.dc.html": {
+   "x": 3040,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Erro 500 · Falha no servidor",
+   "page": "estados",
+   "expand": "fill"
+  },
+  "SemConexao.dc.html": {
+   "x": 4560,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "Sem conexão",
+   "page": "estados",
+   "expand": "fill"
+  },
+  "SessaoExpirada.dc.html": {
+   "x": 0,
+   "y": 1240,
+   "w": 1440,
+   "h": 1000,
+   "title": "Sessão expirada (JWT)",
+   "page": "estados",
+   "expand": "fill"
+  },
+  "Feedback.dc.html": {
+   "x": 1520,
+   "y": 1240,
+   "w": 1440,
+   "h": 1500,
+   "title": "Toasts, diálogos, loading e vazios",
+   "page": "estados"
+  },
+  "EscopoMVP.dc.html": {
+   "x": 3360,
+   "y": 0,
+   "w": 1440,
+   "h": 1240,
+   "title": "Escopo do MVP · 25/11",
+   "page": "capa"
+  },
+  "Avisos.dc.html": {
+   "x": 3368,
+   "y": 0,
+   "w": 380,
+   "h": 380,
+   "title": "Componente · Avisos (sino, opcional)",
+   "page": "fundamentos"
+  },
+  "ModeloDados.dc.html": {
+   "x": 5760,
+   "y": 0,
+   "w": 1840,
+   "h": 1000,
+   "title": "Modelo de dados · 5 tabelas",
+   "page": "fluxos"
+  },
+  "ProfPainelAvisos.dc.html": {
+   "x": 4560,
+   "y": 1360,
+   "w": 1440,
+   "h": 1000,
+   "title": "Professor · Painel com avisos (opcional)",
+   "page": "professor",
+   "expand": "fill"
+  },
+  "AlunoPainelAvisos.dc.html": {
+   "x": 6080,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Aluno · Painel com avisos (opcional)",
+   "page": "aluno",
+   "expand": "fill"
+  },
+  "Perfil.dc.html": {
+   "x": 7600,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Meu perfil (opcional)",
+   "page": "aluno",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "Landing.dc.html": {
+   "x": 6080,
+   "y": 0,
+   "w": 1440,
+   "h": 2200,
+   "title": "Home pública (antes do login)",
+   "page": "auth",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "ProfHome.dc.html": {
+   "x": 6080,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Professor · Início (home)",
+   "page": "professor",
+   "expand": "fill",
+   "is_interactive": true
+  },
+  "AlunoHome.dc.html": {
+   "x": 9120,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Aluno · Início (home)",
+   "page": "aluno",
+   "expand": "fill",
+   "is_interactive": true
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "Icone.dc.html",
+  "LogoMark.dc.html",
+  "EscopoMVP.dc.html",
+  "Fundamentos.dc.html",
+  "Componentes.dc.html",
+  "Sidebar.dc.html",
+  "Avisos.dc.html",
+  "FluxoAuth.dc.html",
+  "FluxoProfessor.dc.html",
+  "FluxoAluno.dc.html",
+  "ModeloDados.dc.html",
+  "Landing.dc.html",
+  "Login.dc.html",
+  "LoginCarregando.dc.html",
+  "LoginErro.dc.html",
+  "Cadastro.dc.html",
+  "ProfHome.dc.html",
+  "ProfPainel.dc.html",
+  "ProfDisciplinas.dc.html",
+  "ProfAtividades.dc.html",
+  "ProfNotas.dc.html",
+  "ProfPainelSkeleton.dc.html",
+  "ProfPainelVazio.dc.html",
+  "ProfNovaAtividade.dc.html",
+  "ProfPainelAvisos.dc.html",
+  "AlunoHome.dc.html",
+  "AlunoPainel.dc.html",
+  "AlunoNotas.dc.html",
+  "AlunoPainelSkeleton.dc.html",
+  "AlunoPainelErro.dc.html",
+  "AlunoPainelAvisos.dc.html",
+  "Perfil.dc.html",
+  "Erro404.dc.html",
+  "Erro403.dc.html",
+  "Erro500.dc.html",
+  "SemConexao.dc.html",
+  "SessaoExpirada.dc.html",
+  "Feedback.dc.html"
+ ],
+ "notes": {
+  "t-capa": {
+   "x": 0,
+   "y": -300,
+   "text": "AcadFlow — Capa, identidade e escopo",
+   "kind": "title1",
+   "maxW": 4800,
+   "page": "capa"
+  },
+  "t-fund": {
+   "x": 0,
+   "y": -300,
+   "text": "Fundamentos e componentes",
+   "kind": "title1",
+   "maxW": 3288,
+   "page": "fundamentos"
+  },
+  "t-fluxos": {
+   "x": 0,
+   "y": -300,
+   "text": "Fluxos do usuário e modelo de dados",
+   "kind": "title1",
+   "maxW": 7600,
+   "page": "fluxos"
+  },
+  "s-fluxos": {
+   "x": 0,
+   "y": 980,
+   "text": "Legenda: cartão com borda azul = tela · cartão cinza = ação do sistema · losango âmbar = decisão · cartão azul cheio = destino final.",
+   "w": 520,
+   "size": "m",
+   "fill": "blue",
+   "page": "fluxos"
+  },
+  "t-auth": {
+   "x": 0,
+   "y": -300,
+   "text": "Home pública, login, carregando, erro e cadastro",
+   "kind": "title1",
+   "maxW": 7520,
+   "page": "auth"
+  },
+  "s-auth": {
+   "x": 0,
+   "y": 960,
+   "text": "Cadastro público cria sempre ALUNO (papel definido no servidor). Professores e matrículas vêm do seed. Senha com hash bcrypt; JWT carrega o perfil e decide o painel. Erro de login genérico de propósito.",
+   "w": 520,
+   "size": "m",
+   "fill": "orange",
+   "page": "auth"
+  },
+  "t-prof": {
+   "x": 0,
+   "y": -300,
+   "text": "Professor · telas principais",
+   "kind": "title1",
+   "maxW": 7520,
+   "page": "professor"
+  },
+  "t-prof2": {
+   "x": 0,
+   "y": 1060,
+   "text": "Professor · estados (skeleton, vazio, modal, avisos)",
+   "kind": "title1",
+   "maxW": 6000,
+   "page": "professor"
+  },
+  "t-aluno": {
+   "x": 0,
+   "y": -300,
+   "text": "Aluno · telas e estados",
+   "kind": "title1",
+   "maxW": 10560,
+   "page": "aluno"
+  },
+  "s-aluno": {
+   "x": 0,
+   "y": 1060,
+   "text": "Regra (MVP): média só das notas lançadas, arredondada para 1 casa uma vez; ≥ 7,0 Aprovado · 5,0–6,9 Recuperação · < 5,0 Reprovado · sem notas = “Sem notas”. Enquanto faltar nota, mostrar “parcial”.",
+   "w": 520,
+   "size": "m",
+   "fill": "orange",
+   "page": "aluno"
+  },
+  "t-estados": {
+   "x": 0,
+   "y": -300,
+   "text": "Erros de sistema",
+   "kind": "title1",
+   "maxW": 6000,
+   "page": "estados"
+  },
+  "t-estados2": {
+   "x": 0,
+   "y": 940,
+   "text": "Sessão e feedback",
+   "kind": "title1",
+   "maxW": 2960,
+   "page": "estados"
+  }
+ },
+ "designSystems": []
 }
