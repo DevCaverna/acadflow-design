@@ -36,7 +36,7 @@
 - [ ] Quadros e arquivos SVG/PNG/.dc.html estão organizados
 - [ ] Telas para PROFESSOR e ALUNO seguem as regras de negócio do design (média ≥7, recuperação 5–6,9)
 - [ ] Estados de erro, carregamento e vazio foram considerados, quando aplicável
-- [ ] Textos estão preparados para localização pt-BR, en e es
+- [ ] Textos estão preparados para localização pt-BR
 - [ ] Assets e textos possuem contraste/legibilidade adequados
 - [ ] README/índice de arquivos atualizado
 - [ ] Impacto nos componentes Web documentado
