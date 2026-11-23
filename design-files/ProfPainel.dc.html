@@ -18,7 +18,7 @@ a{color:#2E43C8}a:hover{color:#2436A8}
 </helmet>
 <div style="min-height: 1000px; display: flex; flex-wrap: wrap; background: #F5F6FA; font-family: Inter, sans-serif; color: #151826">
   <div style="flex: 1 1 248px; max-width: 100%; background: #FFFFFF; border-right: 1px solid #E4E6EE">
-    <dc-import name="Sidebar" perfil="professor" ativo="inicio" hint-size="100%,860px"></dc-import>
+    <dc-import name="Sidebar" perfil="professor" ativo="visao" hint-size="100%,860px"></dc-import>
   </div>
   <main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 48px; box-sizing: border-box">
     <div style="max-width: 1200px; display: flex; flex-direction: column; gap: 28px">
@@ -27,7 +27,15 @@ a{color:#2E43C8}a:hover{color:#2436A8}
           <span style="font-size: 14px; color: #5A6072">Segunda-feira, 23 de novembro</span>
           <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 40px; font-weight: 700">Olá, Profa. Marina</h1>
         </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 12px">
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+          <div style="position: relative">
+            <button onClick="{{ toggleAvisos }}" aria-label="Avisos recentes: 1" aria-expanded="{{ avisosExp }}" style="position: relative; width: 44px; height: 44px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"></path></svg><span aria-hidden="true" style="position: absolute; top: -6px; right: -6px; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box; border-radius: 999px; background: #151826; color: #FFFFFF; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">1</span></button>
+            <sc-if value="{{ avisosAbertos }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; right: 0; top: 54px; z-index: 20">
+                <dc-import name="Avisos" perfil="professor" hint-size="380px,300px"></dc-import>
+              </div>
+            </sc-if>
+          </div>
           <a href="/ProfDisciplinas.dc.html" style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; text-decoration: none">Nova disciplina</a>
           <a href="/ProfNovaAtividade.dc.html" style="height: 44px; padding: 0 18px; border-radius: 10px; background: #2E43C8; color: #FFFFFF; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round"><path d="M12 5v14M5 12h14"></path></svg>Nova atividade</a>
         </div>
@@ -47,7 +55,7 @@ a{color:#2E43C8}a:hover{color:#2436A8}
           <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
             <section style="flex: 2 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; overflow: hidden">
               <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid #E4E6EE">
-                <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Próximas entregas</h2>
+                <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Próximos prazos</h2>
                 <a href="/ProfAtividades.dc.html" style="font-size: 14px; font-weight: 600; text-decoration: none">Ver todas</a>
               </div>
               <sc-for list="{{ entregas }}" as="e" hint-placeholder-count="4">
@@ -139,11 +147,19 @@ a{color:#2E43C8}a:hover{color:#2436A8}
   </main>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"estado":{"editor":"enum","options":["normal","carregando","vazio","erro"],"default":"normal"},"$preview":{"width":1440,"height":1000}}'>
+<script type="text/x-dc" data-dc-script data-props='{"estado":{"editor":"enum","options":["normal","carregando","vazio","erro"],"default":"normal"},"avisos":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":1000}}'>
 class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { avisos: null };
+  }
   renderVals() {
+    const avisosAbertos = this.state.avisos === null ? (this.props.avisos ?? false) : this.state.avisos;
     const e = this.props.estado ?? 'normal';
     return {
+      avisosAbertos: avisosAbertos,
+      avisosExp: avisosAbertos ? 'true' : 'false',
+      toggleAvisos: () => this.setState({ avisos: !avisosAbertos }),
       isNormal: e === 'normal',
       isLoading: e === 'carregando',
       isVazio: e === 'vazio',
@@ -152,14 +168,14 @@ class Component extends DCLogic {
       stats: [
         { rotulo: 'Disciplinas', valor: '4', nota: 'semestre 2026.2', corNota: '#5A6072' },
         { rotulo: 'Alunos', valor: '128', nota: 'em 4 turmas', corNota: '#5A6072' },
-        { rotulo: 'Atividades abertas', valor: '6', nota: '2 vencem esta semana', corNota: '#5A6072' },
-        { rotulo: 'Notas pendentes', valor: '23', nota: 'em 2 atividades encerradas', corNota: '#8A5300' }
+        { rotulo: 'Atividades abertas', valor: '6', nota: '1 vence esta semana', corNota: '#5A6072' },
+        { rotulo: 'Notas a lançar', valor: '14', nota: 'Lista 2 — Normalização', corNota: '#8A5300' }
       ],
       entregas: [
         { dia: '28', mes: 'nov', titulo: 'Lista 3 — Consultas SQL', disc: 'Banco de Dados', badge: 'Vence em 5 dias', badgeBg: '#FDF3E1', badgeCor: '#8A5300' },
-        { dia: '02', mes: 'dez', titulo: 'Trabalho prático: API REST', disc: 'Desenvolvimento Web', badge: 'Publicada', badgeBg: '#EEF0FC', badgeCor: '#2436A8' },
-        { dia: '05', mes: 'dez', titulo: 'Diagrama de casos de uso', disc: 'Engenharia de Software', badge: 'Publicada', badgeBg: '#EEF0FC', badgeCor: '#2436A8' },
-        { dia: '10', mes: 'dez', titulo: 'Prova 2', disc: 'Algoritmos e Estruturas de Dados', badge: 'Publicada', badgeBg: '#EEF0FC', badgeCor: '#2436A8' }
+        { dia: '02', mes: 'dez', titulo: 'Trabalho prático: API REST', disc: 'Desenvolvimento Web', badge: 'Aberta', badgeBg: '#EEF0FC', badgeCor: '#2436A8' },
+        { dia: '05', mes: 'dez', titulo: 'Diagrama de casos de uso', disc: 'Engenharia de Software', badge: 'Aberta', badgeBg: '#EEF0FC', badgeCor: '#2436A8' },
+        { dia: '10', mes: 'dez', titulo: 'Prova 2', disc: 'Algoritmos e Estruturas de Dados', badge: 'Aberta', badgeBg: '#EEF0FC', badgeCor: '#2436A8' }
       ],
       disciplinas: [
         { nome: 'Banco de Dados', alunos: 32, media: '6,8' },

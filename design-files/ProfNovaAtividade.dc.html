@@ -33,24 +33,24 @@ a{color:#2E43C8}a:hover{color:#2436A8}
           <input id="na-titulo-campo" value="Lista 4 — Índices e transações" style="height: 44px; padding: 0 14px; border: 1px solid #C9CDDA; border-radius: 6px; font: 15px Inter, sans-serif; color: #151826; box-sizing: border-box">
         </div>
         <div style="display: flex; flex-direction: column; gap: 6px">
-          <label for="na-desc" style="font-size: 14px; font-weight: 600">Descrição</label>
+          <label for="na-desc" style="font-size: 14px; font-weight: 600">Descrição <span style="font-weight: 400; color: #5A6072">(opcional)</span></label>
           <textarea id="na-desc" rows="4" placeholder="Instruções, formato de entrega e critérios" style="padding: 12px 14px; border: 1px solid #C9CDDA; border-radius: 6px; font: 15px Inter, sans-serif; resize: vertical"></textarea>
         </div>
         <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
           <div style="display: flex; flex-direction: column; gap: 6px">
-            <label for="na-data" style="font-size: 14px; font-weight: 600">Data de entrega</label>
+            <label for="na-data" style="font-size: 14px; font-weight: 600">Data limite <span style="font-weight: 400; color: #5A6072">(opcional)</span></label>
             <input id="na-data" type="date" value="2026-11-20" aria-invalid="true" aria-describedby="na-data-erro" style="height: 44px; padding: 0 14px; border: 1px solid #C0322A; border-radius: 6px; font: 15px Inter, sans-serif; color: #151826; box-sizing: border-box; box-shadow: 0 0 0 3px #FCE9E7">
-            <span id="na-data-erro" style="font-size: 13px; color: #C0322A">A data deve ser hoje ou depois.</span>
+            <span id="na-data-erro" style="font-size: 13px; color: #C0322A">Escolha uma data a partir de hoje.</span>
           </div>
           <div style="display: flex; flex-direction: column; gap: 6px">
             <label for="na-disc" style="font-size: 14px; font-weight: 600">Disciplina</label>
             <select id="na-disc" style="height: 44px; padding: 0 12px; border: 1px solid #C9CDDA; border-radius: 6px; font: 15px Inter, sans-serif; background: #FFFFFF"><option>Banco de Dados</option><option>Desenvolvimento Web</option><option>Engenharia de Software</option><option>Algoritmos e Estruturas de Dados</option></select>
           </div>
         </div>
-        <label style="display: flex; gap: 12px; align-items: flex-start; padding: 14px; border: 1px solid #E4E6EE; border-radius: 12px; cursor: pointer">
-          <input type="checkbox" checked style="width: 18px; height: 18px; margin: 2px 0 0; accent-color: #2E43C8">
-          <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 15px; font-weight: 600">Publicar para os alunos agora</span><span style="font-size: 13px; color: #5A6072">Se desmarcado, a atividade fica como rascunho e só você a vê.</span></span>
-        </label>
+        <div role="note" style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; background: #EEF0FC; color: #1C2A8C">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; flex: 0 0 20px"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7h.01"></path></svg>
+          <span style="font-size: 14px; line-height: 20px">A atividade fica visível para os alunos matriculados assim que for criada.</span>
+        </div>
       </div>
       <div style="display: flex; justify-content: flex-end; gap: 12px; padding: 16px 24px; border-top: 1px solid #E4E6EE">
         <a href="/ProfAtividades.dc.html" style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; font-weight: 600; font-size: 15px; color: #151826; display: inline-flex; align-items: center; text-decoration: none">Cancelar</a>

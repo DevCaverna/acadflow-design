@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Escopo do MVP · entrega 25/11</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#2E43C8}a:hover{color:#2436A8}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1240px; box-sizing: border-box; padding: 72px 80px; background: #F5F6FA; color: #151826; font-family: Inter, sans-serif; display: flex; flex-direction: column; gap: 32px">
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">Entrega 25/11/2026</span>
+    <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700">Escopo do MVP</h1>
+  </div>
+
+  <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px 28px; display: flex; flex-direction: column; gap: 16px">
+    <h2 style="margin: 0; font-size: 18px; font-weight: 600">Fluxo que precisa funcionar</h2>
+    <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
+      <sc-for list="{{ passos }}" as="p" hint-placeholder-count="6">
+        <li style="background: #EEF0FC; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #2E43C8">{{ p.n }}</span>
+          <span style="font-size: 14px; line-height: 20px; font-weight: 600">{{ p.t }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+    <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px 28px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-size: 18px; font-weight: 600; color: #1C7A4A">Entra no MVP</h2>
+      <sc-for list="{{ entra }}" as="i" hint-placeholder-count="8">
+        <span style="display: flex; gap: 10px; font-size: 14px; line-height: 20px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="fill: none; stroke: #1C7A4A; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 16px; margin-top: 2px"><path d="M5 12l5 5L20 7"></path></svg>{{ i }}</span>
+      </sc-for>
+    </section>
+    <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px 28px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-size: 18px; font-weight: 600; color: #8A5300">Opcional, se sobrar tempo</h2>
+      <sc-for list="{{ opcional }}" as="i" hint-placeholder-count="3">
+        <span style="display: flex; gap: 10px; font-size: 14px; line-height: 20px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="fill: none; stroke: #8A5300; stroke-width: 2.6; stroke-linecap: round; flex: 0 0 16px; margin-top: 2px"><path d="M12 6v7M12 18h.01"></path></svg>{{ i }}</span>
+      </sc-for>
+    </section>
+    <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px 28px; display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-size: 18px; font-weight: 600; color: #5A6072">Fora do escopo</h2>
+      <sc-for list="{{ fora }}" as="i" hint-placeholder-count="8">
+        <span style="display: flex; gap: 10px; font-size: 14px; line-height: 20px; color: #5A6072"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="fill: none; stroke: #8A90A6; stroke-width: 2.6; stroke-linecap: round; flex: 0 0 16px; margin-top: 2px"><path d="M6 6l12 12M18 6L6 18"></path></svg>{{ i }}</span>
+      </sc-for>
+    </section>
+  </div>
+
+  <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; overflow: hidden">
+    <div style="padding: 18px 28px; border-bottom: 1px solid #E4E6EE"><h2 style="margin: 0; font-size: 18px; font-weight: 600">Tela × rota da API</h2></div>
+    <table style="width: 100%; border-collapse: collapse; font-size: 14px">
+      <thead><tr style="background: #F9FAFC; text-align: left">
+        <th scope="col" style="padding: 12px 28px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Tela</th>
+        <th scope="col" style="padding: 12px 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Rota</th>
+        <th scope="col" style="padding: 12px 28px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Quem</th>
+      </tr></thead>
+      <tbody>
+        <sc-for list="{{ rotas }}" as="r" hint-placeholder-count="7">
+          <tr style="border-top: 1px solid #F0F1F5">
+            <td style="padding: 11px 28px; font-weight: 600">{{ r.tela }}</td>
+            <td style="padding: 11px 16px; font-family: ui-monospace, monospace; font-size: 13px">{{ r.rota }}</td>
+            <td style="padding: 11px 28px; color: #5A6072">{{ r.quem }}</td>
+          </tr>
+        </sc-for>
+      </tbody>
+    </table>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1240}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      passos: [
+        { n: '1', t: 'Professor entra' },
+        { n: '2', t: 'Cria disciplina' },
+        { n: '3', t: 'Cria atividade (já visível)' },
+        { n: '4', t: 'Aluno matriculado vê a atividade' },
+        { n: '5', t: 'Professor lança nota' },
+        { n: '6', t: 'Aluno vê média e situação parcial' }
+      ],
+      entra: [
+        'Login e-mail/senha (bcrypt + JWT)',
+        'Disciplinas com código e semestre',
+        'Atividades com prazo opcional',
+        'Lançar notas 0,0–10,0 (PUT idempotente)',
+        'Média parcial e situação do aluno',
+        'Skeleton, vazio, erro, 403/404/500, sessão expirada',
+        'Contas e matrículas por seed'
+      ],
+      opcional: [
+        'Sino de avisos derivado de prazos e notas (sem lido/não lido)',
+        'Meu perfil: nome, e-mail e senha',
+        'Sem push, e-mail ou histórico de avisos'
+      ],
+      fora: [
+        'Cadastro público (pós-MVP, só ALUNO)',
+        'Tabela de notificações, push e e-mail',
+        'Avatar (R2 + Sharp) e anexos em PDF',
+        'Rascunho de atividade',
+        'Tela de gestão de matrículas',
+        'Entregas dos alunos',
+        'Recuperação de nota e relatórios',
+        'Modo escuro',
+        'Exclusão de disciplina com histórico'
+      ],
+      rotas: [
+        { tela: 'Login', rota: 'POST /auth/login · GET /auth/me', quem: 'Todos' },
+        { tela: 'Disciplinas (professor)', rota: 'GET /disciplines · POST /disciplines', quem: 'Professor' },
+        { tela: 'Atividades', rota: 'GET · POST /disciplines/:id/activities', quem: 'Professor cria · aluno lê' },
+        { tela: 'Lançar notas', rota: 'PUT /activities/:id/grades/:studentId', quem: 'Professor responsável' },
+        { tela: 'Notas e média (aluno)', rota: 'GET /disciplines/:id/grades/me', quem: 'Aluno matriculado' },
+        { tela: 'Painel do aluno', rota: 'GET /disciplines (só matriculadas)', quem: 'Aluno' },
+        { tela: 'Sino de avisos', rota: 'reaproveita os dados acima, sem rota nova', quem: 'Opcional' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

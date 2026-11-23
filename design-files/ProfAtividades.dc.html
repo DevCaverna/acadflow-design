@@ -42,9 +42,9 @@ a{color:#2E43C8}a:hover{color:#2436A8}
               <thead>
                 <tr style="background: #F9FAFC; text-align: left">
                   <th scope="col" style="padding: 14px 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Atividade</th>
-                  <th scope="col" style="padding: 14px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Entrega</th>
-                  <th scope="col" style="padding: 14px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Status</th>
-                  <th scope="col" style="padding: 14px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Notas</th>
+                  <th scope="col" style="padding: 14px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Data limite</th>
+                  <th scope="col" style="padding: 14px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Prazo</th>
+                  <th scope="col" style="padding: 14px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Com nota</th>
                   <th scope="col" style="padding: 14px 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072; text-align: right">Ações</th>
                 </tr>
               </thead>
@@ -79,6 +79,7 @@ a{color:#2E43C8}a:hover{color:#2436A8}
             </div>
           </sc-for>
           <a href="/ProfNotas.dc.html" style="display: flex; align-items: center; justify-content: center; height: 48px; font-size: 14px; font-weight: 600; text-decoration: none">Ver todos e lançar notas</a>
+          <p style="margin: 0; padding: 0 20px 16px; font-size: 12px; line-height: 1.5; color: #5A6072">Matrículas são cadastradas pela instituição (seed no MVP). Média: só notas lançadas.</p>
         </aside>
       </div>
     </div>
@@ -89,9 +90,9 @@ a{color:#2E43C8}a:hover{color:#2436A8}
 class Component extends DCLogic {
   renderVals() {
     const st = {
-      aberta: { status: 'Publicada', bg: '#EEF0FC', cor: '#2436A8' },
+      aberta: { status: 'Aberta', bg: '#EEF0FC', cor: '#2436A8' },
       vence: { status: 'Vence em 5 dias', bg: '#FDF3E1', cor: '#8A5300' },
-      fechada: { status: 'Encerrada', bg: '#F5F6FA', cor: '#5A6072' }
+      fechada: { status: 'Prazo encerrado', bg: '#F5F6FA', cor: '#5A6072' }
     };
     const n = (x) => ({ lancadas: x, pct: Math.round(x / 32 * 100) + '%' });
     return {

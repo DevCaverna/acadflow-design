@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>AcadFlow — Organize disciplinas, atividades e notas</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#2E43C8}a:hover{color:#2436A8}
+</style>
+</helmet>
+<div style="background: #FFFFFF; font-family: Inter, sans-serif; color: #151826">
+  <header style="border-bottom: 1px solid #E4E6EE">
+    <nav aria-label="Principal" style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+      <a href="/Landing.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #151826">
+        <dc-import name="LogoMark" tamanho="{{ 36 }}" simples="{{ true }}" hint-size="36px,36px"></dc-import>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">AcadFlow</span>
+      </a>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+        <a href="#professores" style="height: 44px; padding: 0 12px; display: inline-flex; align-items: center; font-size: 15px; font-weight: 500; color: #5A6072; text-decoration: none">Professores</a>
+        <a href="#alunos" style="height: 44px; padding: 0 12px; display: inline-flex; align-items: center; font-size: 15px; font-weight: 500; color: #5A6072; text-decoration: none">Alunos</a>
+        <a href="/Login.dc.html" style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; display: inline-flex; align-items: center; font-size: 15px; font-weight: 600; color: #151826; text-decoration: none">Entrar</a>
+        <a href="/Cadastro.dc.html" style="height: 44px; padding: 0 18px; border-radius: 10px; background: #2E43C8; display: inline-flex; align-items: center; font-size: 15px; font-weight: 600; color: #FFFFFF; text-decoration: none">Criar conta</a>
+      </div>
+    </nav>
+  </header>
+
+  <section style="background: #F5F6FA">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+      <div style="flex: 1 1 440px; display: flex; flex-direction: column; gap: 24px">
+        <span style="align-self: flex-start; display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: #FDF3E1; color: #8A5300; font-size: 13px; font-weight: 600">Gestão acadêmica de forma simples</span>
+        <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 56px; line-height: 1.05; font-weight: 700; letter-spacing: -0.03em">Organize disciplinas, atividades e notas.</h1>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #5A6072; max-width: 520px">Professores cadastram disciplinas, criam atividades e lançam notas. Alunos acompanham a média e a situação em cada disciplina.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px">
+          <a href="/Login.dc.html" style="height: 52px; padding: 0 24px; border-radius: 10px; background: #2E43C8; color: #FFFFFF; font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; text-decoration: none">Entrar no AcadFlow</a>
+          <a href="/Cadastro.dc.html" style="height: 52px; padding: 0 24px; border-radius: 10px; border: 1px solid #C9CDDA; background: #FFFFFF; color: #151826; font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; text-decoration: none">Sou aluno, criar conta</a>
+        </div>
+        <span style="font-size: 13px; color: #5A6072">Professor? Sua conta é criada pela coordenação.</span>
+      </div>
+
+      <div aria-hidden="true" style="flex: 1 1 420px; position: relative; min-height: 400px">
+        <div style="position: absolute; left: 0; top: 24px; right: 64px; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; box-shadow: 0 12px 32px rgba(21,24,38,0.10); padding: 20px; display: flex; flex-direction: column; gap: 14px">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">Lançar notas · Banco de Dados</span>
+          <span style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; border-bottom: 1px solid #F0F1F5; padding-bottom: 10px"><b>Ana Souza</b><span style="display: flex; gap: 6px"><span style="width: 48px; height: 32px; border: 1px solid #C9CDDA; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">7,0</span><span style="width: 48px; height: 32px; border: 1px solid #C9CDDA; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">5,5</span><span style="width: 48px; height: 32px; border: 2px solid #F2A93B; background: #FDF3E1; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">6,0</span></span></span>
+          <span style="display: flex; justify-content: space-between; align-items: center; font-size: 14px; border-bottom: 1px solid #F0F1F5; padding-bottom: 10px"><b>Bruno Lima</b><span style="display: flex; gap: 6px"><span style="width: 48px; height: 32px; border: 1px solid #C9CDDA; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">8,5</span><span style="width: 48px; height: 32px; border: 1px solid #C9CDDA; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">7,5</span><span style="width: 48px; height: 32px; border: 1px solid #C9CDDA; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">8,3</span></span></span>
+          <span style="display: flex; justify-content: space-between; align-items: center; font-size: 14px"><b>Carla Mendes</b><span style="display: flex; gap: 6px"><span style="width: 48px; height: 32px; border: 1px solid #C9CDDA; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">9,5</span><span style="width: 48px; height: 32px; border: 1px solid #C9CDDA; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">8,5</span><span style="width: 48px; height: 32px; border: 1px solid #C9CDDA; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: 600">9,0</span></span></span>
+        </div>
+        <div style="position: absolute; right: 0; bottom: 0; width: 260px; background: #2E43C8; color: #FFFFFF; border-radius: 16px; box-shadow: 0 16px 40px rgba(46,67,200,0.30); padding: 20px; display: flex; flex-direction: column; gap: 8px">
+          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #DDE2FA">Visão do aluno</span>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 44px; line-height: 1; font-weight: 700">6,2</span>
+          <span style="align-self: flex-start; display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: #FDF3E1; color: #8A5300; font-size: 12px; font-weight: 600">Recuperação (parcial)</span>
+          <span style="font-size: 13px; color: #DDE2FA">3 de 5 atividades com nota</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="professores" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 32px; display: flex; flex-direction: column; gap: 28px">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: #2E43C8">PARA PROFESSORES</span>
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 36px; line-height: 1.15; font-weight: 700">Menos planilha, mais aula.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+      <sc-for list="{{ prof }}" as="f" hint-placeholder-count="3">
+        <div style="border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+          <span style="width: 44px; height: 44px; border-radius: 12px; background: #EEF0FC; color: #2E43C8; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="{{ f.icon }}"></path></svg></span>
+          <h3 style="margin: 0; font-size: 18px; font-weight: 600">{{ f.t }}</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A6072">{{ f.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="alunos" style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 72px; display: flex; flex-direction: column; gap: 28px">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: #8A5300">PARA ALUNOS</span>
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 36px; line-height: 1.15; font-weight: 700">Saiba onde você está em cada disciplina.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+      <sc-for list="{{ aluno }}" as="f" hint-placeholder-count="3">
+        <div style="border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+          <span style="width: 44px; height: 44px; border-radius: 12px; background: #FDF3E1; color: #8A5300; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="{{ f.icon }}"></path></svg></span>
+          <h3 style="margin: 0; font-size: 18px; font-weight: 600">{{ f.t }}</h3>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A6072">{{ f.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="como-funciona" style="background: #151826; color: #FFFFFF">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 32px">
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">Como funciona</h2>
+      <ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px">
+        <sc-for list="{{ passos }}" as="p" hint-placeholder-count="4">
+          <li style="display: flex; flex-direction: column; gap: 8px; border-top: 2px solid #F2A93B; padding-top: 16px">
+            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #F2A93B">{{ p.n }}</span>
+            <span style="font-size: 17px; font-weight: 600">{{ p.t }}</span>
+            <span style="font-size: 14px; line-height: 1.6; color: #C9D0F5">{{ p.d }}</span>
+          </li>
+        </sc-for>
+      </ol>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px">
+        <a href="/Login.dc.html" style="height: 48px; padding: 0 22px; border-radius: 10px; background: #FFFFFF; color: #151826; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; text-decoration: none">Entrar</a>
+        <a href="/Cadastro.dc.html" style="height: 48px; padding: 0 22px; border-radius: 10px; border: 1px solid #5A6072; color: #FFFFFF; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; text-decoration: none">Criar conta de aluno</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: #F5F6FA; border-top: 1px solid #E4E6EE">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 32px; display: flex; flex-direction: column; gap: 40px">
+      <div style="display: flex; flex-wrap: wrap; gap: 40px">
+        <div style="flex: 2 1 300px; display: flex; flex-direction: column; gap: 14px">
+          <a href="/Landing.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #151826">
+            <dc-import name="LogoMark" tamanho="{{ 40 }}" hint-size="40px,40px"></dc-import>
+            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.02em">AcadFlow</span>
+          </a>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A6072; max-width: 340px">Organize disciplinas, atividades e notas. Um sistema de gestão acadêmica para professores e alunos.</p>
+        </div>
+        <nav aria-label="Produto" style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 6px">
+          <h2 style="margin: 0 0 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #151826">Produto</h2>
+          <a href="#professores" style="font-size: 14px; color: #5A6072; text-decoration: none; min-height: 28px; display: inline-flex; align-items: center">Para professores</a>
+          <a href="#alunos" style="font-size: 14px; color: #5A6072; text-decoration: none; min-height: 28px; display: inline-flex; align-items: center">Para alunos</a>
+          <a href="#como-funciona" style="font-size: 14px; color: #5A6072; text-decoration: none; min-height: 28px; display: inline-flex; align-items: center">Como funciona</a>
+        </nav>
+        <nav aria-label="Acesso" style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 6px">
+          <h2 style="margin: 0 0 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #151826">Acesso</h2>
+          <a href="/Login.dc.html" style="font-size: 14px; color: #5A6072; text-decoration: none; min-height: 28px; display: inline-flex; align-items: center">Entrar</a>
+          <a href="/Cadastro.dc.html" style="font-size: 14px; color: #5A6072; text-decoration: none; min-height: 28px; display: inline-flex; align-items: center">Criar conta de aluno</a>
+          <span style="font-size: 13px; line-height: 1.5; color: #5A6072">Professores: conta criada pela coordenação.</span>
+        </nav>
+        <div style="flex: 1 1 160px; display: flex; flex-direction: column; gap: 6px">
+          <h2 style="margin: 0 0 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #151826">Projeto</h2>
+          <span style="font-size: 14px; line-height: 1.6; color: #5A6072">Projeto acadêmico</span>
+          <span style="font-size: 14px; line-height: 1.6; color: #5A6072">React + NestJS + PostgreSQL</span>
+          <span style="font-size: 14px; line-height: 1.6; color: #5A6072">[CONTATO DA EQUIPE]</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 24px; border-top: 1px solid #E4E6EE; font-size: 13px; color: #5A6072">
+        <span>© 2026 AcadFlow · Projeto acadêmico</span>
+        <span>Senhas protegidas com hash · acesso por perfil</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      prof: [
+        { t: 'Disciplinas e turmas', d: 'Cadastre a disciplina com código e semestre e veja os alunos matriculados.', icon: 'M4 19V5a2 2 0 0 1 2-2h14v15H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h14' },
+        { t: 'Atividades com prazo', d: 'Crie a atividade e ela já aparece para a turma, com data limite opcional.', icon: 'M9 3h6v4H9zM7 5H5v16h14V5h-2M9 12h6M9 16h4' },
+        { t: 'Notas numa tabela só', d: 'Lance notas de 0,0 a 10,0, com validação antes de salvar e média calculada na hora.', icon: 'M4 20V11M10 20V5M16 20v-6M3 20h18' }
+      ],
+      aluno: [
+        { t: 'Suas disciplinas', d: 'Veja só as disciplinas em que você está matriculado, com professor e atividades.', icon: 'M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z' },
+        { t: 'Média e situação', d: 'Acompanhe a média parcial e saiba se está aprovado, em recuperação ou reprovado.', icon: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2' },
+        { t: 'Prazos à vista', d: 'As próximas datas limite aparecem logo na sua página inicial.', icon: 'M8 3v4M16 3v4M4 9h16M5 5h14v16H5z' }
+      ],
+      passos: [
+        { n: '01', t: 'A instituição matricula', d: 'Professores e matrículas são cadastrados pela coordenação.' },
+        { n: '02', t: 'O professor cria', d: 'Disciplinas e atividades com prazo.' },
+        { n: '03', t: 'O professor lança notas', d: 'Uma nota por aluno em cada atividade.' },
+        { n: '04', t: 'O aluno acompanha', d: 'Média e situação atualizadas a cada nota.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

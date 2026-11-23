@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>AcadFlow — Capa</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#C9D0F5}a:hover{color:#FFFFFF}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; box-sizing: border-box; padding: 96px; background: #151826; color: #FFFFFF; font-family: Inter, sans-serif; display: flex; justify-content: space-between; gap: 96px">
+  <div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1 1 auto">
+    <div style="display: flex; align-items: center; gap: 16px">
+      <dc-import name="LogoMark" tamanho="{{ 64 }}" hint-size="64px,64px"></dc-import>
+      <span style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #C9D0F5">Sistema de gestão acadêmica</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 24px">
+      <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 144px; line-height: 1; font-weight: 700; letter-spacing: -0.03em">AcadFlow</h1>
+      <p style="margin: 0; font-size: 32px; line-height: 1.3; color: #C9D0F5; max-width: 640px">Organize disciplinas, atividades e notas.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; border-top: 1px solid #2E3245; padding-top: 32px">
+      <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8A90A6">Arquivo</span><span style="font-size: 16px">Design de produto · v1.0</span></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8A90A6">Plataforma</span><span style="font-size: 16px">Web · React + NestJS</span></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8A90A6">Perfis</span><span style="font-size: 16px">Professor · Aluno</span></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8A90A6">Atualizado</span><span style="font-size: 16px">Novembro 2026</span></div>
+    </div>
+  </div>
+  <div style="width: 440px; flex: 0 0 440px; background: #1D2132; border: 1px solid #2E3245; border-radius: 20px; padding: 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8A90A6; margin-bottom: 16px">Neste arquivo</span>
+    <sc-for list="{{ paginas }}" as="p" hint-placeholder-count="7">
+      <div style="display: flex; gap: 20px; padding: 14px 0; border-bottom: 1px solid #2E3245">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; color: #F2A93B; width: 28px">{{ p.n }}</span>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <span style="font-size: 17px; font-weight: 600">{{ p.nome }}</span>
+          <span style="font-size: 14px; color: #A9AEC0">{{ p.desc }}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      paginas: [
+        { n: '01', nome: 'Capa, ícone e escopo', desc: 'Identidade, ícone e escopo do MVP' },
+        { n: '02', nome: 'Fundamentos e componentes', desc: 'Cores, tipografia, botões, campos, skeleton' },
+        { n: '03', nome: 'Fluxos e dados', desc: 'Autenticação, professor, aluno e modelo de dados' },
+        { n: '04', nome: 'Home e autenticação', desc: 'Home pública, login, erro e cadastro' },
+        { n: '05', nome: 'Professor', desc: 'Início, visão geral, disciplinas e notas' },
+        { n: '06', nome: 'Aluno', desc: 'Início, visão geral, notas e perfil' },
+        { n: '07', nome: 'Erros e feedback', desc: '404, 403, 500, offline, sessão, toasts' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

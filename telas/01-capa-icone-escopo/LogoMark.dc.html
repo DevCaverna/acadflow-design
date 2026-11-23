@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Ícone AcadFlow</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: {{ px }}; height: {{ px }}; display: block; line-height: 0">
+<svg role="img" aria-label="Ícone AcadFlow: livro aberto com caneta escrevendo Acad" width="{{ size }}" height="{{ size }}" viewBox="0 0 512 512" style="display: block">
+<rect width="512" height="512" rx="116" fill="{{ c.bg }}"></rect>
+<path d="M92 198 L92 406 C150 386 208 388 256 414 C304 388 362 386 420 406 L420 198 Z" fill="{{ c.shadow }}"></path>
+<path d="M104 168 C156 150 212 154 256 182 L256 392 C212 366 156 362 104 380 Z" fill="{{ c.page1 }}"></path>
+<path d="M256 182 C300 154 356 150 408 168 L408 380 C356 362 300 366 256 392 Z" fill="{{ c.page2 }}"></path>
+<path d="M256 184 L256 390" stroke="{{ c.shadow }}" stroke-width="6" fill="none"></path>
+<g opacity="{{ detailOp }}" stroke="{{ c.lines }}" stroke-width="10" stroke-linecap="round" fill="none">
+<path d="M140 226 C170 218 196 218 222 228"></path>
+<path d="M140 262 C170 254 196 254 222 264"></path>
+<path d="M140 298 C166 290 186 290 204 298"></path>
+</g>
+<text x="328" y="290" text-anchor="middle" transform="rotate(-6 328 290)" font-family="Caveat, cursive" font-weight="700" font-size="78" fill="{{ c.ink }}" opacity="{{ detailOp }}">Acad</text>
+<g transform="translate(394 304) rotate(-42)">
+<path d="M0 0 L26 -10 L26 10 Z" fill="{{ c.nib }}"></path>
+<rect x="26" y="-12" width="12" height="24" fill="{{ c.band }}"></rect>
+<rect x="38" y="-12" width="88" height="24" rx="3" fill="{{ c.pen }}"></rect>
+<rect x="126" y="-12" width="20" height="24" rx="7" fill="{{ c.band }}"></rect>
+</g>
+</svg>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tamanho":{"editor":"int","default":240,"min":16,"max":1024},"variante":{"editor":"enum","options":["cor","mono","claro"],"default":"cor"},"simples":{"editor":"boolean","default":false},"$preview":{"width":240,"height":240}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const size = this.props.tamanho ?? 240;
+    const v = this.props.variante ?? 'cor';
+    const pal = {
+      cor:   { bg: '#2E43C8', shadow: '#1C2A8C', page1: '#FFFFFF', page2: '#EEF0FC', lines: '#B9C2F2', ink: '#2E43C8', nib: '#151826', band: '#1C2A8C', pen: '#F2A93B' },
+      mono:  { bg: '#151826', shadow: '#3A3F55', page1: '#FFFFFF', page2: '#E9EBF2', lines: '#A9AEC0', ink: '#151826', nib: '#151826', band: '#5A6072', pen: '#FFFFFF' },
+      claro: { bg: '#EEF0FC', shadow: '#C9D0F5', page1: '#FFFFFF', page2: '#FFFFFF', lines: '#C9D0F5', ink: '#2E43C8', nib: '#151826', band: '#1C2A8C', pen: '#F2A93B' }
+    };
+    return {
+      size: size,
+      px: size + 'px',
+      c: pal[v] || pal.cor,
+      detailOp: (this.props.simples ?? false) ? 0 : 1
+    };
+  }
+}
+</script>
+</body>
+</html>

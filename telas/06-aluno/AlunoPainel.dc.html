@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Painel do aluno</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#2E43C8}a:hover{color:#2436A8}
+@keyframes af-sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.af-sk{background:linear-gradient(90deg,#E9EBF2 25%,#F4F5F9 50%,#E9EBF2 75%);background-size:200% 100%;animation:af-sk 1.4s ease-in-out infinite;border-radius:6px}
+</style>
+</helmet>
+<div style="min-height: 1000px; display: flex; flex-wrap: wrap; background: #F5F6FA; font-family: Inter, sans-serif; color: #151826">
+  <div style="flex: 1 1 248px; max-width: 100%; background: #FFFFFF; border-right: 1px solid #E4E6EE">
+    <dc-import name="Sidebar" perfil="aluno" ativo="visao" hint-size="100%,860px"></dc-import>
+  </div>
+  <main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 48px; box-sizing: border-box">
+    <div style="max-width: 1200px; display: flex; flex-direction: column; gap: 28px">
+      <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <span style="font-size: 14px; color: #5A6072">Segunda-feira, 23 de novembro · Semestre 2026.2</span>
+          <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 40px; font-weight: 700">Olá, Ana</h1>
+        </div>
+        <div style="position: relative">
+            <button onClick="{{ toggleAvisos }}" aria-label="Avisos recentes: 3" aria-expanded="{{ avisosExp }}" style="position: relative; width: 44px; height: 44px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 20a2 2 0 0 0 4 0"></path></svg><span aria-hidden="true" style="position: absolute; top: -6px; right: -6px; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box; border-radius: 999px; background: #151826; color: #FFFFFF; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center">3</span></button>
+            <sc-if value="{{ avisosAbertos }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; right: 0; top: 54px; z-index: 20">
+                <dc-import name="Avisos" perfil="aluno" hint-size="380px,300px"></dc-import>
+              </div>
+            </sc-if>
+          </div>
+      </header>
+
+      <sc-if value="{{ isNormal }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; flex-direction: column; gap: 28px">
+          <div style="display: flex; flex-wrap: wrap; gap: 16px">
+            <div style="flex: 2 1 380px; background: #2E43C8; color: #FFFFFF; border-radius: 16px; padding: 24px 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+              <div style="display: flex; flex-direction: column; gap: 4px">
+                <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #DDE2FA">Média geral parcial</span>
+                <span style="font-family: 'Space Grotesk', sans-serif; font-size: 56px; line-height: 1; font-weight: 700">7,4</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 10px; min-width: 220px">
+                <span style="display: flex; align-items: center; gap: 10px; font-size: 15px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: #FFFFFF; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round"><path d="M5 12l5 5L20 7"></path></svg>Acima de 7,0 em 3 de 4 disciplinas</span>
+                <span style="display: flex; align-items: center; gap: 10px; font-size: 15px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: #F2A93B; stroke-width: 2.6; stroke-linecap: round"><path d="M12 6v7M12 18h.01"></path></svg>1 abaixo de 7,0 (recuperação parcial)</span>
+              </div>
+            </div>
+            <div style="flex: 1 1 220px; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 6px">
+              <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">Atividades abertas</span>
+              <span style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; line-height: 1.1; font-weight: 700">3</span>
+              <span style="font-size: 13px; color: #8A5300">1 vence esta semana</span>
+            </div>
+          </div>
+
+          <div role="note" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 12px; background: #FDF3E1; color: #5C3800">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; flex: 0 0 20px"><path d="M12 3L2 20h20z"></path><path d="M12 10v4M12 17h.01"></path></svg>
+            <span style="font-size: 14px; line-height: 20px; flex: 1 1 300px">Situação parcial: <b>recuperação em Banco de Dados</b> (média 6,2 com 3 de 5 atividades corrigidas). Para aprovação é preciso média 7,0.</span>
+            <a href="/AlunoNotas.dc.html" style="font-size: 14px; font-weight: 600; color: #5C3800">Ver notas</a>
+          </div>
+
+          <section style="display: flex; flex-direction: column; gap: 16px">
+            <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Minhas disciplinas</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px">
+              <sc-for list="{{ disciplinas }}" as="d" hint-placeholder-count="4">
+                <a href="/AlunoNotas.dc.html" style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 14px; text-decoration: none; color: #151826">
+                  <span style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px"><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 16px; font-weight: 600">{{ d.nome }}</span><span style="font-size: 13px; color: #5A6072">{{ d.prof }}</span></span></span>
+                  <span style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px"><span style="display: flex; align-items: baseline; gap: 6px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">{{ d.media }}</span><span style="font-size: 13px; color: #5A6072">/ 10</span></span><span style="display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: {{ d.bg }}; color: {{ d.cor }}; font-size: 12px; font-weight: 600">{{ d.sit }}</span></span>
+                  <span style="display: block; height: 8px; border-radius: 999px; background: #F0F1F5"><span style="display: block; height: 8px; border-radius: 999px; width: {{ d.pct }}; background: {{ d.barra }}"></span></span>
+                  <span style="font-size: 13px; color: #5A6072">{{ d.feitas }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </section>
+
+          <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; overflow: hidden">
+            <div style="padding: 20px 24px; border-bottom: 1px solid #E4E6EE"><h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Próximas atividades</h2></div>
+            <sc-for list="{{ atividades }}" as="a" hint-placeholder-count="3">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 16px 24px; border-bottom: 1px solid #F0F1F5">
+                <div style="width: 52px; height: 52px; border-radius: 12px; background: #EEF0FC; color: #1C2A8C; display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 0 0 52px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; line-height: 1">{{ a.dia }}</span><span style="font-size: 11px; font-weight: 600; text-transform: uppercase">{{ a.mes }}</span></div>
+                <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 220px; min-width: 0"><span style="font-size: 15px; font-weight: 600">{{ a.titulo }}</span><span style="font-size: 13px; color: #5A6072">{{ a.disc }}</span></div>
+                <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: {{ a.bg }}; color: {{ a.cor }}; font-size: 12px; font-weight: 600">{{ a.badge }}</span>
+              </div>
+            </sc-for>
+          </section>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+        <div role="status" aria-label="Carregando painel" style="display: flex; flex-direction: column; gap: 28px">
+          <div aria-hidden="true" style="display: flex; flex-wrap: wrap; gap: 16px">
+            <div style="flex: 2 1 380px; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px 28px; display: flex; flex-direction: column; gap: 12px"><div class="af-sk" style="height: 12px; width: 120px"></div><div class="af-sk" style="height: 56px; width: 110px"></div></div>
+            <div style="flex: 1 1 220px; background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px"><div class="af-sk" style="height: 12px; width: 60%"></div><div class="af-sk" style="height: 40px; width: 50px"></div></div>
+          </div>
+          <div aria-hidden="true" class="af-sk" style="height: 22px; width: 220px"></div>
+          <div aria-hidden="true" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px">
+            <sc-for list="{{ quatro }}" as="x" hint-placeholder-count="4">
+              <div style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+                <div class="af-sk" style="height: 16px; width: 70%"></div>
+                <div class="af-sk" style="height: 12px; width: 45%"></div>
+                <div class="af-sk" style="height: 32px; width: 35%"></div>
+                <div class="af-sk" style="height: 8px; width: 100%; border-radius: 999px"></div>
+              </div>
+            </sc-for>
+          </div>
+          <div aria-hidden="true" style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; padding: 20px 24px; display: flex; flex-direction: column; gap: 20px">
+            <div class="af-sk" style="height: 20px; width: 200px"></div>
+            <sc-for list="{{ tres }}" as="x" hint-placeholder-count="3">
+              <div style="display: flex; align-items: center; gap: 16px"><div class="af-sk" style="width: 52px; height: 52px; border-radius: 12px; flex: 0 0 52px"></div><div style="display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto"><div class="af-sk" style="height: 14px; width: 50%"></div><div class="af-sk" style="height: 12px; width: 30%"></div></div></div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isErro }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="background: #FFFFFF; border: 1px solid #F3C4BF; border-radius: 16px; padding: 56px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px">
+          <span style="width: 64px; height: 64px; border-radius: 999px; background: #FCE9E7; color: #C0322A; display: inline-flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M3 15a4 4 0 0 0 4 4h10a4 4 0 0 0 1-7.9A6 6 0 0 0 6.3 9.5 4 4 0 0 0 3 15z"></path><path d="M12 11v3M12 17h.01"></path></svg></span>
+          <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 600">Não conseguimos carregar suas notas</h2>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5A6072; max-width: 460px">Pode ser uma instabilidade momentânea. Suas notas não foram alteradas — tente novamente.</p>
+          <a href="/AlunoPainel.dc.html" style="margin-top: 8px; height: 44px; padding: 0 20px; border-radius: 10px; background: #2E43C8; color: #FFFFFF; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"></path></svg>Tentar novamente</a>
+          <span style="font-size: 12px; color: #5A6072; font-family: ui-monospace, monospace">Erro 503 · GET /aluno/painel</span>
+        </div>
+      </sc-if>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"estado":{"editor":"enum","options":["normal","carregando","erro"],"default":"normal"},"avisos":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { avisos: null };
+  }
+  renderVals() {
+    const avisosAbertos = this.state.avisos === null ? (this.props.avisos ?? false) : this.state.avisos;
+    const e = this.props.estado ?? 'normal';
+    const sit = {
+      ap: { sit: 'Aprovado (parcial)', bg: '#E6F4EC', cor: '#1C7A4A', barra: '#1C7A4A' },
+      rec: { sit: 'Recuperação (parcial)', bg: '#FDF3E1', cor: '#8A5300', barra: '#F2A93B' }
+    };
+    return {
+      avisosAbertos: avisosAbertos,
+      avisosExp: avisosAbertos ? 'true' : 'false',
+      toggleAvisos: () => this.setState({ avisos: !avisosAbertos }),
+      isNormal: e === 'normal',
+      isLoading: e === 'carregando',
+      isErro: e === 'erro',
+      quatro: [1, 2, 3, 4],
+      tres: [1, 2, 3],
+      disciplinas: [
+        { nome: 'Banco de Dados', prof: 'Profa. Marina Costa', media: '6,2', pct: '62%', feitas: '3 de 5 atividades com nota', ...sit.rec },
+        { nome: 'Desenvolvimento Web', prof: 'Prof. Rafael Dias', media: '8,4', pct: '84%', feitas: '3 de 4 atividades com nota', ...sit.ap },
+        { nome: 'Engenharia de Software', prof: 'Profa. Marina Costa', media: '7,8', pct: '78%', feitas: '4 de 6 atividades com nota', ...sit.ap },
+        { nome: 'Algoritmos e Estruturas de Dados', prof: 'Prof. Paulo Reis', media: '7,2', pct: '72%', feitas: '3 de 5 atividades com nota', ...sit.ap }
+      ],
+      atividades: [
+        { dia: '28', mes: 'nov', titulo: 'Lista 3 — Consultas SQL', disc: 'Banco de Dados', badge: 'Faltam 5 dias', bg: '#FDF3E1', cor: '#8A5300' },
+        { dia: '02', mes: 'dez', titulo: 'Trabalho prático: API REST', disc: 'Desenvolvimento Web', badge: 'Faltam 9 dias', bg: '#EEF0FC', cor: '#2436A8' },
+        { dia: '05', mes: 'dez', titulo: 'Diagrama de casos de uso', disc: 'Engenharia de Software', badge: 'Faltam 12 dias', bg: '#EEF0FC', cor: '#2436A8' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
