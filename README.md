@@ -18,7 +18,7 @@ Este repositório reúne o design do AcadFlow, sistema para organizar disciplina
 
 ```mermaid
 flowchart LR
-    Login["Login / Cadastro"] --> Perfil{"Perfil"}
+    Login["Login"] --> Perfil{"Perfil"}
     Perfil --> Prof["Painel do professor"]
     Perfil --> Aluno["Painel do aluno"]
     Prof --> PD["Disciplinas"]
@@ -40,7 +40,7 @@ flowchart LR
 1. **Capa e ícone:** Main, Icone, LogoMark (componente)
 2. **Fundamentos e componentes:** Fundamentos (cores, tipografia, espaçamento), Componentes, Sidebar (componente)
 3. **Fluxos:** FluxoAuth, FluxoProfessor, FluxoAluno
-4. **Autenticação:** Login, LoginCarregando, LoginErro, Cadastro
+4. **Autenticação:** Login, LoginCarregando, LoginErro, Cadastro (pós-MVP, somente `ALUNO`)
 5. **Professor:** ProfPainel, ProfDisciplinas, ProfAtividades, ProfNotas, ProfPainelSkeleton, ProfPainelVazio, ProfNovaAtividade
 6. **Aluno:** AlunoPainel, AlunoNotas, AlunoPainelSkeleton, AlunoPainelErro
 7. **Erros e feedback:** Erro404, Erro403, Erro500, SemConexao, SessaoExpirada, Feedback
