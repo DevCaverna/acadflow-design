@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Menu lateral AcadFlow</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<nav aria-label="Menu principal" style="width: 100%; min-height: 860px; box-sizing: border-box; padding: 24px 16px; background: #FFFFFF; font-family: Inter, sans-serif; color: #151826; display: flex; flex-direction: column; gap: 32px">
+  <div style="display: flex; align-items: center; gap: 10px; padding: 0 8px">
+    <dc-import name="LogoMark" tamanho="{{ 36 }}" simples="{{ true }}" hint-size="36px,36px"></dc-import>
+    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em">AcadFlow</span>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 4px; flex: 1 1 auto">
+    <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072; padding: 0 12px 8px">{{ secao }}</span>
+    <sc-for list="{{ itens }}" as="it" hint-placeholder-count="4">
+      <a href="{{ it.href }}" aria-current="{{ it.current }}" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; font-size: 15px; font-weight: {{ it.weight }}; color: {{ it.color }}; background: {{ it.bg }}">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 20px"><path d="{{ it.icon }}"></path></svg>
+        {{ it.label }}
+      </a>
+    </sc-for>
+  </div>
+  <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #E4E6EE; border-radius: 12px">
+    <span style="width: 40px; height: 40px; border-radius: 999px; background: #DDE2FA; color: #1C2A8C; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex: 0 0 40px">{{ iniciais }}</span>
+    <div style="display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto; min-width: 0">
+      <span style="font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ nome }}</span>
+      <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #5A6072">{{ papel }}</span>
+    </div>
+    <a href="/Login.dc.html" aria-label="Sair da conta" style="width: 36px; height: 36px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; color: #5A6072"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"></path></svg></a>
+  </div>
+</nav>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"perfil":{"editor":"enum","options":["professor","aluno"],"default":"professor"},"ativo":{"editor":"enum","options":["inicio","disciplinas","atividades","notas"],"default":"inicio"},"$preview":{"width":248,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const perfil = this.props.perfil ?? 'professor';
+    const ativo = this.props.ativo ?? 'inicio';
+    const ic = {
+      inicio: 'M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z',
+      disciplinas: 'M4 19V5a2 2 0 0 1 2-2h14v15H6a2 2 0 0 0-2 2 2 2 0 0 0 2 2h14',
+      atividades: 'M9 3h6v4H9zM7 5H5v16h14V5h-2M9 12h6M9 16h4',
+      notas: 'M4 20V11M10 20V5M16 20v-6M3 20h18'
+    };
+    const base = perfil === 'professor'
+      ? [
+          { id: 'inicio', label: 'Início', href: '/ProfPainel.dc.html' },
+          { id: 'disciplinas', label: 'Disciplinas', href: '/ProfDisciplinas.dc.html' },
+          { id: 'atividades', label: 'Atividades e alunos', href: '/ProfAtividades.dc.html' },
+          { id: 'notas', label: 'Lançar notas', href: '/ProfNotas.dc.html' }
+        ]
+      : [
+          { id: 'inicio', label: 'Início', href: '/AlunoPainel.dc.html' },
+          { id: 'notas', label: 'Notas e média', href: '/AlunoNotas.dc.html' }
+        ];
+    const itens = base.map((i) => {
+      const on = i.id === ativo;
+      return {
+        ...i,
+        icon: ic[i.id],
+        current: on ? 'page' : 'false',
+        bg: on ? '#EEF0FC' : 'transparent',
+        color: on ? '#2436A8' : '#5A6072',
+        weight: on ? '600' : '500'
+      };
+    });
+    const prof = perfil === 'professor';
+    return {
+      itens: itens,
+      secao: prof ? 'Área do professor' : 'Área do aluno',
+      nome: prof ? 'Profa. Marina Costa' : 'Ana Souza',
+      iniciais: prof ? 'MC' : 'AS',
+      papel: prof ? 'PROFESSOR' : 'ALUNO'
+    };
+  }
+}
+</script>
+</body>
+</html>

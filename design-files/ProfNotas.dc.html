@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Lançar notas · Banco de Dados</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#2E43C8}a:hover{color:#2436A8}
+</style>
+</helmet>
+<div style="min-height: 1000px; display: flex; flex-wrap: wrap; background: #F5F6FA; font-family: Inter, sans-serif; color: #151826">
+  <div style="flex: 1 1 248px; max-width: 100%; background: #FFFFFF; border-right: 1px solid #E4E6EE">
+    <dc-import name="Sidebar" perfil="professor" ativo="notas" hint-size="100%,860px"></dc-import>
+  </div>
+  <main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 48px; box-sizing: border-box">
+    <div style="max-width: 1200px; display: flex; flex-direction: column; gap: 20px">
+      <nav aria-label="Trilha" style="font-size: 14px; color: #5A6072; display: flex; gap: 8px"><a href="/ProfDisciplinas.dc.html" style="text-decoration: none">Disciplinas</a><span aria-hidden="true">/</span><a href="/ProfAtividades.dc.html" style="text-decoration: none">Banco de Dados</a><span aria-hidden="true">/</span><span aria-current="page">Notas</span></nav>
+      <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 40px; font-weight: 700">Lançar notas</h1>
+          <span style="font-size: 14px; color: #5A6072">Banco de Dados · notas de 0 a 10, com uma casa decimal · média simples das atividades</span>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center">
+          <label for="filtro-sit" style="font-size: 14px; color: #5A6072">Mostrar</label>
+          <select id="filtro-sit" style="height: 44px; padding: 0 12px; border: 1px solid #C9CDDA; border-radius: 10px; font: 15px Inter, sans-serif; background: #FFFFFF"><option>Todos os alunos</option><option>Em recuperação</option><option>Sem nota</option></select>
+        </div>
+      </header>
+
+      <div role="alert" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 12px; background: #FCE9E7; color: #8F241E">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; flex: 0 0 20px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 17h.01"></path></svg>
+        <span style="font-size: 14px; line-height: 20px; flex: 1 1 300px"><b>1 nota inválida.</b> Diego Rocha · Lista 2: a nota deve estar entre 0 e 10.</span>
+        <a href="#nota-diego-l2" style="font-size: 14px; font-weight: 600; color: #8F241E">Ir para o campo</a>
+      </div>
+
+      <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; overflow: hidden">
+        <div style="overflow-x: auto">
+          <table style="width: 100%; min-width: 860px; border-collapse: collapse; font-size: 14px">
+            <thead>
+              <tr style="background: #F9FAFC; text-align: left">
+                <th scope="col" style="padding: 14px 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Aluno</th>
+                <sc-for list="{{ colunas }}" as="c" hint-placeholder-count="4">
+                  <th scope="col" style="padding: 14px 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072; text-align: center">{{ c }}</th>
+                </sc-for>
+                <th scope="col" style="padding: 14px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072; text-align: center">Média</th>
+                <th scope="col" style="padding: 14px 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5A6072">Situação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <sc-for list="{{ linhas }}" as="l" hint-placeholder-count="8">
+                <tr style="border-top: 1px solid #F0F1F5; background: {{ l.fundo }}">
+                  <th scope="row" style="padding: 12px 20px; text-align: left; font-weight: 600; font-size: 15px; white-space: nowrap">{{ l.nome }}</th>
+                  <sc-for list="{{ l.notas }}" as="n" hint-placeholder-count="4">
+                    <td style="padding: 10px 8px; text-align: center; vertical-align: top">
+                      <input id="{{ n.id }}" inputmode="decimal" aria-label="{{ n.label }}" aria-invalid="{{ n.invalid }}" value="{{ n.v }}" placeholder="—" style="width: 72px; height: 40px; text-align: center; border: {{ n.borda }}; border-radius: 6px; font: 600 15px Inter, sans-serif; color: #151826; background: {{ n.bg }}; box-sizing: border-box">
+                      <sc-if value="{{ n.erro }}" hint-placeholder-val="{{ false }}"><span style="display: block; font-size: 12px; color: #C0322A; margin-top: 4px">0 a 10</span></sc-if>
+                    </td>
+                  </sc-for>
+                  <td style="padding: 12px; text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700">{{ l.media }}</td>
+                  <td style="padding: 12px 20px"><span style="display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: {{ l.sbg }}; color: {{ l.scor }}; font-size: 12px; font-weight: 600; white-space: nowrap">{{ l.sit }}</span></td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div style="position: sticky; bottom: 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 20px; background: #151826; color: #FFFFFF; border-radius: 14px; box-shadow: 0 12px 32px rgba(21,24,38,0.24)">
+        <span style="font-size: 14px">3 alterações não salvas</span>
+        <div style="display: flex; gap: 12px">
+          <button style="height: 44px; padding: 0 18px; border: 1px solid #5A6072; border-radius: 10px; background: transparent; color: #FFFFFF; font: 600 15px Inter, sans-serif">Descartar</button>
+          <button disabled aria-describedby="salvar-dica" style="height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: #3A3F55; color: #C9CDDA; font: 600 15px Inter, sans-serif">Salvar notas</button>
+        </div>
+        <span id="salvar-dica" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Corrija a nota inválida para salvar.</span>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const colunas = ['Lista 1', 'Prova 1', 'Lista 2', 'Lista 3'];
+    const sit = {
+      ap: { sit: 'Aprovado', sbg: '#E6F4EC', scor: '#1C7A4A' },
+      rec: { sit: 'Recuperação', sbg: '#FDF3E1', scor: '#8A5300' },
+      rep: { sit: 'Reprovado', sbg: '#FCE9E7', scor: '#C0322A' },
+      err: { sit: 'Corrigir nota', sbg: '#FCE9E7', scor: '#C0322A' }
+    };
+    const dados = [
+      ['Ana Souza', ['7,0', '5,5', '6,0', ''], '6,2', 'rec'],
+      ['Bruno Lima', ['8,5', '7,5', '8,3', ''], '8,1', 'ap'],
+      ['Carla Mendes', ['9,5', '8,5', '9,0', ''], '9,0', 'ap'],
+      ['Diego Rocha', ['5,0', '3,5', '12', ''], '—', 'err'],
+      ['Elisa Nunes', ['8,0', '7,0', '7,5', ''], '7,5', 'ap'],
+      ['Felipe Araújo', ['7,0', '6,5', '7,2', ''], '6,9', 'rec'],
+      ['Gabriel Torres', ['4,0', '3,0', '5,0', ''], '4,0', 'rep'],
+      ['Helena Prado', ['10,0', '9,0', '', ''], '9,5', 'ap']
+    ];
+    const linhas = dados.map(([nome, notas, media, s]) => ({
+      nome: nome,
+      media: media,
+      fundo: s === 'err' ? '#FFF8F7' : '#FFFFFF',
+      ...sit[s],
+      notas: notas.map((v, i) => {
+        const erro = v === '12';
+        const editada = nome === 'Bruno Lima' && i === 2 || nome === 'Elisa Nunes' && i === 2;
+        return {
+          v: v,
+          id: erro ? 'nota-diego-l2' : 'nota-' + nome.split(' ')[0].toLowerCase() + '-' + i,
+          label: 'Nota de ' + nome + ' em ' + colunas[i],
+          erro: erro,
+          invalid: erro ? 'true' : 'false',
+          borda: erro ? '2px solid #C0322A' : (editada ? '2px solid #F2A93B' : '1px solid #C9CDDA'),
+          bg: erro ? '#FCE9E7' : (editada ? '#FDF3E1' : '#FFFFFF')
+        };
+      })
+    }));
+    return { colunas: colunas, linhas: linhas };
+  }
+}
+</script>
+</body>
+</html>

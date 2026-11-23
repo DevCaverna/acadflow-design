@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>AcadFlow — Componentes</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#2E43C8}a:hover{color:#2436A8}
+@keyframes af-spin{to{transform:rotate(360deg)}}
+@keyframes af-sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.af-spin{animation:af-spin .8s linear infinite}
+.af-sk{background:linear-gradient(90deg,#E9EBF2 25%,#F4F5F9 50%,#E9EBF2 75%);background-size:200% 100%;animation:af-sk 1.4s ease-in-out infinite}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1640px; box-sizing: border-box; padding: 80px; background: #F5F6FA; color: #151826; font-family: Inter, sans-serif; display: flex; flex-direction: column; gap: 48px">
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">02 · Componentes</span>
+    <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700">Componentes e estados</h1>
+  </div>
+
+  <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px">
+    <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Botões</h2>
+    <div style="display: grid; grid-template-columns: 140px repeat(5, minmax(0, 1fr)); gap: 16px; align-items: center">
+      <span></span>
+      <span style="font-size: 12px; font-weight: 600; color: #5A6072; text-transform: uppercase; letter-spacing: 0.06em">Padrão</span>
+      <span style="font-size: 12px; font-weight: 600; color: #5A6072; text-transform: uppercase; letter-spacing: 0.06em">Hover</span>
+      <span style="font-size: 12px; font-weight: 600; color: #5A6072; text-transform: uppercase; letter-spacing: 0.06em">Foco (teclado)</span>
+      <span style="font-size: 12px; font-weight: 600; color: #5A6072; text-transform: uppercase; letter-spacing: 0.06em">Desabilitado</span>
+      <span style="font-size: 12px; font-weight: 600; color: #5A6072; text-transform: uppercase; letter-spacing: 0.06em">Carregando</span>
+
+      <span style="font-size: 14px; font-weight: 600">Primário</span>
+      <button style="height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #2E43C8; color: #FFFFFF; font: 600 15px Inter, sans-serif; justify-self: start">Salvar notas</button>
+      <button style="height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #2436A8; color: #FFFFFF; font: 600 15px Inter, sans-serif; justify-self: start">Salvar notas</button>
+      <button style="height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #2E43C8; color: #FFFFFF; font: 600 15px Inter, sans-serif; justify-self: start; box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #F2A93B">Salvar notas</button>
+      <button disabled style="height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #E4E6EE; color: #5A6072; font: 600 15px Inter, sans-serif; justify-self: start">Salvar notas</button>
+      <button aria-busy="true" style="height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #2E43C8; color: #FFFFFF; font: 600 15px Inter, sans-serif; justify-self: start; display: inline-flex; align-items: center; gap: 10px; opacity: 0.9"><svg class="af-spin" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 3"><circle cx="12" cy="12" r="9" opacity="0.3"></circle><path d="M21 12a9 9 0 0 0-9-9" stroke-linecap="round"></path></svg>Salvando…</button>
+
+      <span style="font-size: 14px; font-weight: 600">Secundário</span>
+      <button style="height: 44px; padding: 0 20px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; font: 600 15px Inter, sans-serif; justify-self: start">Cancelar</button>
+      <button style="height: 44px; padding: 0 20px; border: 1px solid #8A90A6; border-radius: 10px; background: #F5F6FA; color: #151826; font: 600 15px Inter, sans-serif; justify-self: start">Cancelar</button>
+      <button style="height: 44px; padding: 0 20px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; font: 600 15px Inter, sans-serif; justify-self: start; box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #F2A93B">Cancelar</button>
+      <button disabled style="height: 44px; padding: 0 20px; border: 1px solid #E4E6EE; border-radius: 10px; background: #FFFFFF; color: #8A90A6; font: 600 15px Inter, sans-serif; justify-self: start">Cancelar</button>
+      <span style="font-size: 13px; color: #5A6072">—</span>
+
+      <span style="font-size: 14px; font-weight: 600">Perigo</span>
+      <button style="height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #C0322A; color: #FFFFFF; font: 600 15px Inter, sans-serif; justify-self: start">Excluir</button>
+      <button style="height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #A02720; color: #FFFFFF; font: 600 15px Inter, sans-serif; justify-self: start">Excluir</button>
+      <button style="height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #C0322A; color: #FFFFFF; font: 600 15px Inter, sans-serif; justify-self: start; box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #F2A93B">Excluir</button>
+      <button disabled style="height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #E4E6EE; color: #5A6072; font: 600 15px Inter, sans-serif; justify-self: start">Excluir</button>
+      <button aria-busy="true" style="height: 44px; padding: 0 20px; border: 0; border-radius: 10px; background: #C0322A; color: #FFFFFF; font: 600 15px Inter, sans-serif; justify-self: start; display: inline-flex; align-items: center; gap: 10px"><svg class="af-spin" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 3"><circle cx="12" cy="12" r="9" opacity="0.3"></circle><path d="M21 12a9 9 0 0 0-9-9" stroke-linecap="round"></path></svg>Excluindo…</button>
+
+      <span style="font-size: 14px; font-weight: 600">Ícone</span>
+      <button aria-label="Editar atividade" style="width: 44px; height: 44px; border: 1px solid #E4E6EE; border-radius: 10px; background: #FFFFFF; color: #5A6072; display: inline-flex; align-items: center; justify-content: center; justify-self: start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13 7l4 4"></path></svg></button>
+      <button aria-label="Editar atividade" style="width: 44px; height: 44px; border: 1px solid #C9CDDA; border-radius: 10px; background: #F5F6FA; color: #151826; display: inline-flex; align-items: center; justify-content: center; justify-self: start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13 7l4 4"></path></svg></button>
+      <button aria-label="Excluir atividade" style="width: 44px; height: 44px; border: 1px solid #E4E6EE; border-radius: 10px; background: #FFFFFF; color: #C0322A; display: inline-flex; align-items: center; justify-content: center; justify-self: start; box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #F2A93B"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></button>
+      <button disabled aria-label="Excluir atividade" style="width: 44px; height: 44px; border: 1px solid #E4E6EE; border-radius: 10px; background: #FFFFFF; color: #C9CDDA; display: inline-flex; align-items: center; justify-content: center; justify-self: start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></button>
+      <span style="font-size: 13px; color: #5A6072">—</span>
+    </div>
+  </section>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+    <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px">
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Campos de formulário</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="c1" style="font-size: 14px; font-weight: 600">E-mail · padrão</label>
+          <input id="c1" type="email" placeholder="nome@instituicao.edu.br" style="height: 44px; padding: 0 14px; border: 1px solid #C9CDDA; border-radius: 6px; font: 15px Inter, sans-serif; color: #151826; background: #FFFFFF; box-sizing: border-box">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="c2" style="font-size: 14px; font-weight: 600">E-mail · foco</label>
+          <input id="c2" type="email" placeholder="nome@instituicao.edu.br" style="height: 44px; padding: 0 14px; border: 1px solid #2E43C8; border-radius: 6px; font: 15px Inter, sans-serif; color: #151826; background: #FFFFFF; box-sizing: border-box; box-shadow: 0 0 0 3px #DDE2FA">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="c3" style="font-size: 14px; font-weight: 600">Nota · erro</label>
+          <input id="c3" aria-invalid="true" aria-describedby="c3e" placeholder="0 a 10" style="height: 44px; padding: 0 14px; border: 1px solid #C0322A; border-radius: 6px; font: 15px Inter, sans-serif; color: #151826; background: #FFFFFF; box-sizing: border-box; box-shadow: 0 0 0 3px #FCE9E7">
+          <span id="c3e" style="font-size: 13px; color: #C0322A; display: flex; gap: 6px; align-items: center"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 17h.01"></path></svg>A nota deve estar entre 0 e 10.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="c4" style="font-size: 14px; font-weight: 600; color: #5A6072">Disciplina · desabilitado</label>
+          <input id="c4" disabled placeholder="Banco de Dados" style="height: 44px; padding: 0 14px; border: 1px solid #E4E6EE; border-radius: 6px; font: 15px Inter, sans-serif; background: #F5F6FA; box-sizing: border-box">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="c5" style="font-size: 14px; font-weight: 600">Data de entrega</label>
+          <input id="c5" type="date" style="height: 44px; padding: 0 14px; border: 1px solid #C9CDDA; border-radius: 6px; font: 15px Inter, sans-serif; color: #151826; background: #FFFFFF; box-sizing: border-box">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="c6" style="font-size: 14px; font-weight: 600">Disciplina</label>
+          <select id="c6" style="height: 44px; padding: 0 12px; border: 1px solid #C9CDDA; border-radius: 6px; font: 15px Inter, sans-serif; color: #151826; background: #FFFFFF"><option>Banco de Dados</option><option>Engenharia de Software</option></select>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px">
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Etiquetas de situação e perfil</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px">
+        <span style="display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; border-radius: 999px; background: #E6F4EC; color: #1C7A4A; font-size: 13px; font-weight: 600"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round"><path d="M5 12l5 5L20 7"></path></svg>Aprovado</span>
+        <span style="display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; border-radius: 999px; background: #FDF3E1; color: #8A5300; font-size: 13px; font-weight: 600"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round"><path d="M12 6v7M12 18h.01"></path></svg>Recuperação</span>
+        <span style="display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 12px; border-radius: 999px; background: #FCE9E7; color: #C0322A; font-size: 13px; font-weight: 600"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round"><path d="M6 6l12 12M18 6L6 18"></path></svg>Reprovado</span>
+        <span style="display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: #F5F6FA; color: #5A6072; font-size: 13px; font-weight: 600; border: 1px solid #E4E6EE">Sem nota</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px">
+        <span style="display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: #EEF0FC; color: #2436A8; font-size: 13px; font-weight: 600">Publicada</span>
+        <span style="display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: #F5F6FA; color: #5A6072; font-size: 13px; font-weight: 600; border: 1px solid #E4E6EE">Encerrada</span>
+        <span style="display: inline-flex; align-items: center; height: 28px; padding: 0 12px; border-radius: 999px; background: #FDF3E1; color: #8A5300; font-size: 13px; font-weight: 600">Vence em 2 dias</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px">
+        <span style="display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 6px; background: #151826; color: #FFFFFF; font-size: 11px; font-weight: 700; letter-spacing: 0.08em">PROFESSOR</span>
+        <span style="display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 6px; background: #DDE2FA; color: #1C2A8C; font-size: 11px; font-weight: 700; letter-spacing: 0.08em">ALUNO</span>
+      </div>
+      <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #5A6072">Situação sempre com ícone + texto, nunca só pela cor.</p>
+    </section>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+    <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Alertas e toasts</h2>
+      <div role="status" style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 12px 32px rgba(21,24,38,0.16); border: 1px solid #E4E6EE">
+        <span style="width: 28px; height: 28px; border-radius: 999px; background: #E6F4EC; color: #1C7A4A; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 28px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round"><path d="M5 12l5 5L20 7"></path></svg></span>
+        <span style="font-size: 14px; line-height: 20px; flex: 1 1 auto"><b>Notas salvas</b><br><span style="color: #5A6072">28 notas de “Lista 3 — SQL” foram atualizadas.</span></span>
+        <button aria-label="Fechar aviso" style="width: 28px; height: 28px; border: 0; background: transparent; color: #5A6072; font-size: 18px; line-height: 1">×</button>
+      </div>
+      <div role="alert" style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; background: #FFFFFF; box-shadow: 0 12px 32px rgba(21,24,38,0.16); border: 1px solid #E4E6EE">
+        <span style="width: 28px; height: 28px; border-radius: 999px; background: #FCE9E7; color: #C0322A; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 28px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round"><path d="M12 6v7M12 18h.01"></path></svg></span>
+        <span style="font-size: 14px; line-height: 20px; flex: 1 1 auto"><b>Não foi possível salvar</b><br><span style="color: #5A6072">Verifique sua conexão e tente de novo.</span></span>
+        <a href="#" style="font-size: 14px; font-weight: 600; text-decoration: none; padding-top: 4px">Tentar de novo</a>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; background: #FDF3E1; color: #5C3800">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; flex: 0 0 18px; margin-top: 1px"><path d="M12 3L2 20h20z"></path><path d="M12 10v4M12 17h.01"></path></svg>
+        <span style="font-size: 14px; line-height: 20px">Você tem 3 alterações não salvas.</span>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; background: #EEF0FC; color: #1C2A8C">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; flex: 0 0 18px; margin-top: 1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6M12 7h.01"></path></svg>
+        <span style="font-size: 14px; line-height: 20px">A média é calculada automaticamente a partir das notas lançadas.</span>
+      </div>
+    </section>
+
+    <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
+      <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Skeleton e carregamento</h2>
+      <div aria-hidden="true" style="display: flex; gap: 16px; padding: 20px; border: 1px solid #E4E6EE; border-radius: 14px">
+        <div class="af-sk" style="width: 44px; height: 44px; border-radius: 999px; flex: 0 0 44px"></div>
+        <div style="display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+          <div class="af-sk" style="height: 14px; width: 60%; border-radius: 6px"></div>
+          <div class="af-sk" style="height: 12px; width: 90%; border-radius: 6px"></div>
+          <div class="af-sk" style="height: 12px; width: 40%; border-radius: 6px"></div>
+        </div>
+      </div>
+      <div aria-hidden="true" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+        <div style="border: 1px solid #E4E6EE; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="af-sk" style="height: 12px; width: 50%; border-radius: 6px"></div><div class="af-sk" style="height: 28px; width: 40%; border-radius: 6px"></div></div>
+        <div style="border: 1px solid #E4E6EE; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="af-sk" style="height: 12px; width: 50%; border-radius: 6px"></div><div class="af-sk" style="height: 28px; width: 40%; border-radius: 6px"></div></div>
+        <div style="border: 1px solid #E4E6EE; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px"><div class="af-sk" style="height: 12px; width: 50%; border-radius: 6px"></div><div class="af-sk" style="height: 28px; width: 40%; border-radius: 6px"></div></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 24px; padding-top: 8px">
+        <div role="status" style="display: flex; align-items: center; gap: 10px; color: #2E43C8; font-size: 14px; font-weight: 600"><svg class="af-spin" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 3"><circle cx="12" cy="12" r="9" opacity="0.25"></circle><path d="M21 12a9 9 0 0 0-9-9" stroke-linecap="round"></path></svg>Carregando…</div>
+        <div style="flex: 1 1 auto; height: 4px; border-radius: 999px; background: #EEF0FC; overflow: hidden"><div style="width: 62%; height: 4px; background: #2E43C8"></div></div>
+      </div>
+      <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #5A6072">Skeleton para listas e painéis (&gt; 300 ms). Spinner só em botões e ações curtas. Barra de progresso no topo durante navegação.</p>
+    </section>
+  </div>
+
+  <section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 20px">
+    <h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Cards</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+      <div style="border: 1px solid #E4E6EE; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5A6072">Notas pendentes</span>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700">23</span>
+        <span style="font-size: 13px; color: #8A5300">em 2 atividades encerradas</span>
+      </div>
+      <div style="border: 1px solid #E4E6EE; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 12px; font-weight: 600; color: #2436A8; background: #EEF0FC; padding: 4px 8px; border-radius: 6px">BD-204</span><span style="font-size: 13px; color: #5A6072">32 alunos</span></div>
+        <span style="font-size: 18px; font-weight: 600">Banco de Dados</span>
+        <span style="font-size: 14px; color: #5A6072; line-height: 1.5">Modelagem relacional, SQL e normalização.</span>
+      </div>
+      <div style="border: 1px solid #E4E6EE; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 16px; font-weight: 600">Banco de Dados</span><span style="display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 999px; background: #FDF3E1; color: #8A5300; font-size: 12px; font-weight: 600">Recuperação</span></div>
+        <div style="display: flex; align-items: baseline; gap: 6px"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700">6,2</span><span style="font-size: 13px; color: #5A6072">/ 10 · média</span></div>
+        <div style="height: 8px; border-radius: 999px; background: #F5F6FA; position: relative"><div style="width: 62%; height: 8px; border-radius: 999px; background: #F2A93B"></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1640}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Disciplinas do professor</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#2E43C8}a:hover{color:#2436A8}
+</style>
+</helmet>
+<div style="position: relative; min-height: 1000px; display: flex; flex-wrap: wrap; background: #F5F6FA; font-family: Inter, sans-serif; color: #151826">
+  <div style="flex: 1 1 248px; max-width: 100%; background: #FFFFFF; border-right: 1px solid #E4E6EE">
+    <dc-import name="Sidebar" perfil="professor" ativo="disciplinas" hint-size="100%,860px"></dc-import>
+  </div>
+  <main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 48px; box-sizing: border-box">
+    <div style="max-width: 1200px; display: flex; flex-direction: column; gap: 24px">
+      <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <span style="font-size: 14px; color: #5A6072">Semestre 2026.2</span>
+          <h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 40px; font-weight: 700">Disciplinas</h1>
+        </div>
+        <button onClick="{{ abrir }}" style="height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: #2E43C8; color: #FFFFFF; font: 600 15px Inter, sans-serif; display: inline-flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round"><path d="M12 5v14M5 12h14"></path></svg>Nova disciplina</button>
+      </header>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+        <div style="position: relative; flex: 1 1 280px; max-width: 420px">
+          <label for="busca-disc" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Buscar disciplina</label>
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="position: absolute; left: 14px; top: 13px; fill: none; stroke: #5A6072; stroke-width: 2; stroke-linecap: round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <input id="busca-disc" type="search" placeholder="Buscar por nome ou código" style="width: 100%; height: 44px; padding: 0 14px 0 42px; border: 1px solid #C9CDDA; border-radius: 10px; font: 15px Inter, sans-serif; background: #FFFFFF; box-sizing: border-box">
+        </div>
+        <span style="font-size: 14px; color: #5A6072">4 disciplinas</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px">
+        <sc-for list="{{ disciplinas }}" as="d" hint-placeholder-count="4">
+          <article style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+            <div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 12px; font-weight: 600; color: #2436A8; background: #EEF0FC; padding: 4px 8px; border-radius: 6px">{{ d.codigo }}</span><button aria-label="Mais opções da disciplina" style="width: 36px; height: 36px; border: 0; background: transparent; color: #5A6072; border-radius: 8px; font-size: 20px; line-height: 1">⋯</button></div>
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <h2 style="margin: 0; font-size: 18px; font-weight: 600">{{ d.nome }}</h2>
+              <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #5A6072">{{ d.desc }}</p>
+            </div>
+            <div style="display: flex; gap: 20px; font-size: 13px; color: #5A6072; border-top: 1px solid #F0F1F5; padding-top: 14px">
+              <span><b style="color: #151826">{{ d.alunos }}</b> alunos</span>
+              <span><b style="color: #151826">{{ d.atividades }}</b> atividades</span>
+              <span>média <b style="color: #151826">{{ d.media }}</b></span>
+            </div>
+            <a href="/ProfAtividades.dc.html" style="height: 44px; border: 1px solid #C9CDDA; border-radius: 10px; color: #151826; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; text-decoration: none">Abrir disciplina</a>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </main>
+
+  <sc-if value="{{ modalAberto }}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; inset: 0; background: rgba(21,24,38,0.55); display: flex; align-items: flex-start; justify-content: center; padding: 120px 24px; box-sizing: border-box">
+      <div role="dialog" aria-modal="true" aria-labelledby="nd-titulo" style="width: 100%; max-width: 520px; background: #FFFFFF; border-radius: 16px; box-shadow: 0 24px 64px rgba(21,24,38,0.28); display: flex; flex-direction: column">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid #E4E6EE">
+          <h2 id="nd-titulo" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600">Nova disciplina</h2>
+          <button onClick="{{ fechar }}" aria-label="Fechar" style="width: 40px; height: 40px; border: 0; background: transparent; color: #5A6072; font-size: 22px; border-radius: 8px">×</button>
+        </div>
+        <div style="padding: 24px; display: flex; flex-direction: column; gap: 18px">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <label for="nd-nome" style="font-size: 14px; font-weight: 600">Nome da disciplina</label>
+            <input id="nd-nome" placeholder="Ex.: Banco de Dados" style="height: 44px; padding: 0 14px; border: 1px solid #C9CDDA; border-radius: 6px; font: 15px Inter, sans-serif; box-sizing: border-box">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <label for="nd-desc" style="font-size: 14px; font-weight: 600">Descrição <span style="font-weight: 400; color: #5A6072">(opcional)</span></label>
+            <textarea id="nd-desc" rows="3" placeholder="Ementa resumida" style="padding: 12px 14px; border: 1px solid #C9CDDA; border-radius: 6px; font: 15px Inter, sans-serif; resize: vertical"></textarea>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 12px; padding: 16px 24px; border-top: 1px solid #E4E6EE">
+          <button onClick="{{ fechar }}" style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; font: 600 15px Inter, sans-serif; color: #151826">Cancelar</button>
+          <button onClick="{{ fechar }}" style="height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: #2E43C8; color: #FFFFFF; font: 600 15px Inter, sans-serif">Criar disciplina</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"modal":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { aberto: null };
+  }
+  renderVals() {
+    const aberto = this.state.aberto === null ? (this.props.modal ?? false) : this.state.aberto;
+    return {
+      modalAberto: aberto,
+      abrir: () => this.setState({ aberto: true }),
+      fechar: () => this.setState({ aberto: false }),
+      disciplinas: [
+        { codigo: 'BD-204', nome: 'Banco de Dados', desc: 'Modelagem relacional, SQL e normalização.', alunos: 32, atividades: 5, media: '6,8' },
+        { codigo: 'DW-310', nome: 'Desenvolvimento Web', desc: 'Front-end com React e APIs REST com NestJS.', alunos: 28, atividades: 4, media: '7,4' },
+        { codigo: 'ES-221', nome: 'Engenharia de Software', desc: 'Requisitos, UML, testes e processos ágeis.', alunos: 35, atividades: 6, media: '7,9' },
+        { codigo: 'AED-120', nome: 'Algoritmos e Estruturas de Dados', desc: 'Listas, pilhas, filas, árvores e ordenação.', alunos: 33, atividades: 5, media: '6,1' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
