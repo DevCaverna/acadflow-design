@@ -18,7 +18,7 @@ Este repositório reúne o design do AcadFlow, sistema para organizar disciplina
 
 ```mermaid
 flowchart LR
-    Login["Login / Cadastro"] --> Perfil{"Perfil"}
+    Login["Login"] --> Perfil{"Perfil"}
     Perfil --> Prof["Painel do professor"]
     Perfil --> Aluno["Painel do aluno"]
     Prof --> PD["Disciplinas"]
@@ -43,7 +43,7 @@ flowchart LR
 | 01 · Capa, ícone e escopo | Main (capa), Icone, LogoMark, **EscopoMVP** |
 | 02 · Fundamentos e componentes | Fundamentos, Componentes, Sidebar, **Avisos** |
 | 03 · Fluxos e dados | FluxoAuth, FluxoProfessor, FluxoAluno, **ModeloDados** |
-| 04 · Home pública e autenticação | **Landing** (home antes do login), Login, LoginCarregando, LoginErro, Cadastro |
+| 04 · Home pública e autenticação | **Landing** (home antes do login), Login, LoginCarregando, LoginErro, Cadastro (pós-MVP, somente `ALUNO`) |
 | 05 · Professor | **ProfHome** (início), ProfPainel (visão geral), ProfDisciplinas, ProfAtividades, ProfNotas, ProfPainelSkeleton, ProfPainelVazio, ProfNovaAtividade, **ProfPainelAvisos** |
 | 06 · Aluno | **AlunoHome** (início), AlunoPainel (visão geral), AlunoNotas, AlunoPainelSkeleton, AlunoPainelErro, **AlunoPainelAvisos**, **Perfil** |
 | 07 · Erros e feedback | Erro404, Erro403, Erro500, SemConexao, SessaoExpirada, Feedback |
@@ -59,7 +59,7 @@ Em negrito, os quadros novos desta versão.
 
 ## O que mudou para seguir o modelo do MVP (v1.1)
 
-- **Cadastro:** cria sempre conta de ALUNO. Saiu a escolha de perfil; professores e matrículas vêm do seed.
+- **Cadastro (pós-MVP):** cria sempre conta de ALUNO. Saiu a escolha de perfil; no MVP, contas e matrículas vêm do seed.
 - **Atividades:** sem rascunho nem "publicada". A atividade aparece para os alunos assim que é criada. Os status viraram "Aberta", "Vence em X dias" e "Prazo encerrado". Data limite e descrição são opcionais.
 - **Disciplinas:** o modal ganhou Código e Semestre, que não podem se repetir. Disciplina com histórico não pode ser excluída (diálogo de bloqueio em Feedback).
 - **Notas:** "—" significa sem nota. Não conta na média e nunca é salvo como 0. A coluna agora é "Média parcial", e há um aluno exemplo com "Sem notas". Fica explícito que salvar pode ser repetido com segurança (PUT idempotente).

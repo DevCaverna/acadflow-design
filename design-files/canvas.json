@@ -145,7 +145,7 @@
    "y": 0,
    "w": 1440,
    "h": 900,
-   "title": "Cadastro (só aluno)",
+   "title": "Cadastro (pós-MVP, só aluno)",
    "page": "auth",
    "expand": "fill",
    "is_interactive": true
@@ -477,7 +477,7 @@
   "s-auth": {
    "x": 0,
    "y": 960,
-   "text": "Cadastro público cria sempre ALUNO (papel definido no servidor). Professores e matrículas vêm do seed. Senha com hash bcrypt; JWT carrega o perfil e decide o painel. Erro de login genérico de propósito.",
+   "text": "Cadastro público é pós-MVP e cria somente ALUNO (papel definido no servidor). No MVP, contas e matrículas vêm do seed. Senha com hash bcrypt; JWT carrega o perfil e decide o painel. Erro de login genérico de propósito.",
    "w": 520,
    "size": "m",
    "fill": "orange",

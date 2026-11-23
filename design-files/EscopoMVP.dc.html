@@ -88,13 +88,12 @@ class Component extends DCLogic {
       ],
       entra: [
         'Login e-mail/senha (bcrypt + JWT)',
-        'Cadastro público só de ALUNO',
         'Disciplinas com código e semestre',
         'Atividades com prazo opcional',
         'Lançar notas 0,0–10,0 (PUT idempotente)',
         'Média parcial e situação do aluno',
         'Skeleton, vazio, erro, 403/404/500, sessão expirada',
-        'Matrículas e professores por seed'
+        'Contas e matrículas por seed'
       ],
       opcional: [
         'Sino de avisos derivado de prazos e notas (sem lido/não lido)',
@@ -102,6 +101,7 @@ class Component extends DCLogic {
         'Sem push, e-mail ou histórico de avisos'
       ],
       fora: [
+        'Cadastro público (pós-MVP, só ALUNO)',
         'Tabela de notificações, push e e-mail',
         'Avatar (R2 + Sharp) e anexos em PDF',
         'Rascunho de atividade',
