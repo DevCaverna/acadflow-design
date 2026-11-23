@@ -67,7 +67,7 @@
     "t-fluxos": {"x": 0, "y": -300, "text": "Fluxos do usuário", "kind": "title1", "maxW": 5680, "page": "fluxos"},
     "s-fluxos": {"x": 0, "y": 980, "text": "Legenda: cartão com borda azul = tela · cartão cinza = ação do sistema · losango âmbar = decisão · cartão azul cheio = destino final.", "w": 520, "size": "m", "fill": "blue", "page": "fluxos"},
     "t-auth": {"x": 0, "y": -300, "text": "Autenticação · login, carregando, erro e cadastro", "kind": "title1", "maxW": 6000, "page": "auth"},
-    "s-auth": {"x": 0, "y": 960, "text": "Senha com hash bcrypt no backend; após o login o JWT carrega o perfil (PROFESSOR | ALUNO) e decide o painel. Mensagem de erro genérica de propósito: não revela se o e-mail existe.", "w": 520, "size": "m", "fill": "orange", "page": "auth"},
+    "s-auth": {"x": 0, "y": 960, "text": "Senha com hash bcrypt no backend; após o login o JWT carrega o perfil (PROFESSOR | ALUNO) e decide o painel. Mensagem de erro genérica de propósito: não revela se o e-mail existe. Cadastro público é pós-MVP e cria somente ALUNO; no MVP as contas vêm de seed.", "w": 520, "size": "m", "fill": "orange", "page": "auth"},
     "t-prof": {"x": 0, "y": -300, "text": "Professor · telas principais", "kind": "title1", "maxW": 6000, "page": "professor"},
     "t-prof2": {"x": 0, "y": 1060, "text": "Professor · estados (skeleton, vazio, modal)", "kind": "title1", "maxW": 4480, "page": "professor"},
     "t-aluno": {"x": 0, "y": -300, "text": "Aluno · telas e estados", "kind": "title1", "maxW": 6000, "page": "aluno"},
