@@ -6,7 +6,7 @@ Todas as mudanças notáveis de **AcadFlow Design** são documentadas neste arqu
 
 ### Adicionado
 - Documentação em Markdown de tokens visuais e acessibilidade ([docs/tokens-e-acessibilidade.md](docs/tokens-e-acessibilidade.md)) e matriz de rastreabilidade Design × Web × API ([docs/rastreabilidade.md](docs/rastreabilidade.md)).
-- Governança: `CHANGELOG.md`, `SECURITY.md` e `LICENSE` (MIT).
+- Governança: `CHANGELOG.md`, `SECURITY.md`, `LICENSE` (MIT), `.github/CODEOWNERS` e guia de Gerência de Configuração ([docs/gerencia-de-configuracao.md](docs/gerencia-de-configuracao.md)).
 
 ## [1.3.0] - 2026-11-24
 
