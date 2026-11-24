@@ -41,14 +41,23 @@ flowchart LR
 | Página | Quadros |
 | --- | --- |
 | 01 · Capa, ícone e escopo | Main (capa), Icone, LogoMark, **EscopoMVP** |
-| 02 · Fundamentos e componentes | Fundamentos, Componentes, Sidebar, **Avisos** |
+| 02 · Fundamentos e componentes | Fundamentos, Componentes, Sidebar, **Avisos**, **TemaEscuro** |
 | 03 · Fluxos e dados | FluxoAuth, FluxoProfessor, FluxoAluno, **ModeloDados** |
 | 04 · Home pública e autenticação | **Landing** (home antes do login), Login, LoginCarregando, LoginErro, Cadastro (pós-MVP, somente `ALUNO`) |
-| 05 · Professor | **ProfHome** (início), ProfPainel (visão geral), ProfDisciplinas, ProfAtividades, ProfNotas, ProfPainelSkeleton, ProfPainelVazio, ProfNovaAtividade, **ProfPainelAvisos** |
-| 06 · Aluno | **AlunoHome** (início), AlunoPainel (visão geral), AlunoNotas, AlunoPainelSkeleton, AlunoPainelErro, **AlunoPainelAvisos**, **Perfil** |
+| 05 · Professor | **ProfHome** (início), ProfPainel (visão geral), ProfDisciplinas, ProfAtividades, ProfNotas, ProfPainelSkeleton, ProfPainelVazio, ProfNovaAtividade, **ProfPainelAvisos**, **ProfAlunos**, **AtividadeAnexos** |
+| 06 · Aluno | **AlunoHome** (início), AlunoPainel (visão geral), AlunoNotas, AlunoPainelSkeleton, AlunoPainelErro, **AlunoPainelAvisos**, **Perfil**, **PerfilFoto** |
 | 07 · Erros e feedback | Erro404, Erro403, Erro500, SemConexao, SessaoExpirada, Feedback |
 
 Em negrito, os quadros novos desta versão.
+
+## Protótipos pós-MVP (v1.3)
+
+- **ProfAlunos:** buscar, matricular e remover alunos; com notas, a remoção fica bloqueada.
+- **PerfilFoto:** escolher, prévia, enviar e remover a foto.
+- **AtividadeAnexos:** materiais do professor e download do aluno; sem entrega de trabalhos.
+- **TemaEscuro:** cores e componentes no escuro.
+- **Avisos** (sino) e **Perfil** já existiam e não foram duplicados.
+- **Regra vigente:** atividade com notas ou anexos não é excluída (contrato da API).
 
 ## Novidades da v1.2
 

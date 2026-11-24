@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Meu perfil · Foto</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#2E43C8}a:hover{color:#2436A8}
+</style>
+</helmet>
+<div style="position: relative; min-height: 1000px; display: flex; flex-wrap: wrap; background: #F5F6FA; font-family: Inter, sans-serif; color: #151826">
+  <div style="flex: 1 1 248px; max-width: 100%; background: #FFFFFF; border-right: 1px solid #E4E6EE">
+    <dc-import name="Sidebar" perfil="aluno" ativo="perfil" hint-size="100%,860px"></dc-import>
+  </div>
+  <main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 48px; box-sizing: border-box">
+    <div style="max-width: 1200px; display: flex; flex-direction: column; gap: 24px">
+<header style="display: flex; flex-direction: column; gap: 6px"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 40px; font-weight: 700">Meu perfil · Foto</h1><span style="font-size: 14px; color: #5A6072">PNG, JPG ou WebP até 2 MB; vira WebP 256 × 256 em bucket privado</span></header><section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 16px"><h2 style="margin: 0; font-size: 18px; font-weight: 600">Sem foto</h2><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px"><span style="width: 72px; height: 72px; border-radius: 999px; flex: 0 0 72px; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 24px; background: #DDE2FA; color: #1C2A8C">AS</span><div style="display: flex; flex-direction: column; gap: 8px"><div style="display: flex; gap: 8px"><button style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; font: 600 15px Inter, sans-serif">Escolher foto</button></div><span style="font-size: 13px; color: #5A6072">As iniciais aparecem quando não há foto ou ela não carrega.</span></div></div></section><section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 16px"><h2 style="margin: 0; font-size: 18px; font-weight: 600">Prévia antes de enviar</h2><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px"><span role="img" aria-label="Foto de Ana Souza" style="width: 72px; height: 72px; border-radius: 999px; flex: 0 0 72px; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 24px; background: linear-gradient(135deg, #2E43C8, #F2A93B)"></span><div style="display: flex; flex-direction: column; gap: 8px"><div style="display: flex; gap: 8px"><button style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; font: 600 15px Inter, sans-serif">Escolher foto</button><button style="height: 44px; padding: 0 18px; border: 0; border-radius: 10px; background: #2E43C8; color: #FFFFFF; font: 600 15px Inter, sans-serif">Enviar foto</button><button style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; font: 600 15px Inter, sans-serif">Cancelar</button></div><span style="font-size: 13px; color: #5A6072">Nada é salvo até enviar.</span></div></div></section><section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 16px"><h2 style="margin: 0; font-size: 18px; font-weight: 600">Com foto</h2><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px"><span role="img" aria-label="Foto de Ana Souza" style="width: 72px; height: 72px; border-radius: 999px; flex: 0 0 72px; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 24px; background: linear-gradient(135deg, #2E43C8, #F2A93B)"></span><div style="display: flex; flex-direction: column; gap: 8px"><div style="display: flex; gap: 8px"><button style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; font: 600 15px Inter, sans-serif">Escolher foto</button><button style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; font: 600 15px Inter, sans-serif">Remover foto</button></div><span style="font-size: 13px; color: #5A6072">Uma foto nova substitui a anterior.</span></div></div></section><div role="note" style="display: flex; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 12px; background: #FCE9E7; color: #8F241E; font-size: 14px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M12 7v6M12 17h.01"></path></svg><span>Escolha uma imagem PNG, JPG ou WebP de até 2 MB.</span></div><div role="note" style="display: flex; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 12px; background: #FCE9E7; color: #8F241E; font-size: 14px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M12 7v6M12 17h.01"></path></svg><span>O envio de arquivos está indisponível.</span></div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

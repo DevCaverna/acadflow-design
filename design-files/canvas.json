@@ -389,6 +389,42 @@
    "page": "aluno",
    "expand": "fill",
    "is_interactive": true
+  },
+  "ProfAlunos.dc.html": {
+   "x": 7600,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Professor · Gestão de alunos (pós-MVP)",
+   "page": "professor",
+   "expand": "fill"
+  },
+  "AtividadeAnexos.dc.html": {
+   "x": 6080,
+   "y": 1360,
+   "w": 1440,
+   "h": 1000,
+   "title": "Atividade · Anexos (pós-MVP)",
+   "page": "professor",
+   "expand": "fill"
+  },
+  "PerfilFoto.dc.html": {
+   "x": 10640,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Meu perfil · Foto (pós-MVP)",
+   "page": "aluno",
+   "expand": "fill"
+  },
+  "TemaEscuro.dc.html": {
+   "x": 3840,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "Tema escuro (pós-MVP)",
+   "page": "fundamentos",
+   "expand": "fill"
   }
  },
  "order": [
@@ -430,7 +466,11 @@
   "Erro500.dc.html",
   "SemConexao.dc.html",
   "SessaoExpirada.dc.html",
-  "Feedback.dc.html"
+  "Feedback.dc.html",
+  "ProfAlunos.dc.html",
+  "AtividadeAnexos.dc.html",
+  "PerfilFoto.dc.html",
+  "TemaEscuro.dc.html"
  ],
  "notes": {
   "t-capa": {
