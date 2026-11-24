@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Professor · Gestão de alunos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Caveat:wght@700&display=swap">
+<style>
+body{margin:0}
+a{color:#2E43C8}a:hover{color:#2436A8}
+</style>
+</helmet>
+<div style="position: relative; min-height: 1000px; display: flex; flex-wrap: wrap; background: #F5F6FA; font-family: Inter, sans-serif; color: #151826">
+  <div style="flex: 1 1 248px; max-width: 100%; background: #FFFFFF; border-right: 1px solid #E4E6EE">
+    <dc-import name="Sidebar" perfil="professor" ativo="atividades" hint-size="100%,860px"></dc-import>
+  </div>
+  <main style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 48px; box-sizing: border-box">
+    <div style="max-width: 1200px; display: flex; flex-direction: column; gap: 24px">
+<header style="display: flex; flex-direction: column; gap: 6px"><h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 40px; font-weight: 700">Banco de Dados · Alunos</h1><span style="font-size: 14px; color: #5A6072">BD-204 · o professor responsável matricula e remove alunos</span></header><div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start"><section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; overflow: hidden; flex: 1 1 360px"><h2 style="margin: 0; padding: 18px 20px; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600">Alunos matriculados</h2><div style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-top: 1px solid #F0F1F5"><span style="width: 36px; height: 36px; border-radius: 999px; background: #DDE2FA; color: #1C2A8C; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">AS</span><span style="display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto"><b style="font-size: 14px; font-weight: 600">Ana Souza</b><span style="font-size: 12px; color: #5A6072">ana.souza@aluno.edu.br</span></span><button aria-label="Remover matrícula de Ana Souza" style="width: 40px; height: 40px; border: 1px solid #E4E6EE; border-radius: 10px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; color: #C0322A"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></button></div><div style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-top: 1px solid #F0F1F5"><span style="width: 36px; height: 36px; border-radius: 999px; background: #DDE2FA; color: #1C2A8C; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">BL</span><span style="display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto"><b style="font-size: 14px; font-weight: 600">Bruno Lima</b><span style="font-size: 12px; color: #5A6072">bruno.lima@aluno.edu.br</span></span><button aria-label="Remover matrícula de Bruno Lima" style="width: 40px; height: 40px; border: 1px solid #E4E6EE; border-radius: 10px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; color: #C0322A"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></button></div></section><section style="background: #FFFFFF; border: 1px solid #E4E6EE; border-radius: 14px; overflow: hidden; flex: 1 1 360px"><h2 style="margin: 0; padding: 18px 20px; font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600">Adicionar aluno</h2><div style="padding: 0 20px 18px; display: flex; flex-direction: column; gap: 6px"><label for="busca-aluno" style="font-size: 14px; font-weight: 600">Buscar aluno por nome ou e-mail</label><input id="busca-aluno" type="search" value="carla" style="height: 44px; padding: 0 14px; border: 1px solid #C9CDDA; border-radius: 6px; font: 15px Inter, sans-serif"><span style="font-size: 13px; color: #5A6072">Digite pelo menos 3 letras. Até 10 resultados.</span></div><div style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-top: 1px solid #F0F1F5"><span style="width: 36px; height: 36px; border-radius: 999px; background: #DDE2FA; color: #1C2A8C; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">CM</span><span style="display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto"><b style="font-size: 14px; font-weight: 600">Carla Mendes</b><span style="font-size: 12px; color: #5A6072">carla.mendes@aluno.edu.br</span></span><button aria-label="Matricular Carla Mendes" style="height: 44px; padding: 0 18px; border: 1px solid #C9CDDA; border-radius: 10px; background: #FFFFFF; color: #151826; font: 600 15px Inter, sans-serif">Matricular</button></div></section></div><div role="note" style="display: flex; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 12px; background: #EEF0FC; color: #1C2A8C; font-size: 14px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M12 11v6M12 7h.01"></path></svg><span>Vazio: nenhum aluno disponível para matricular.</span></div><div role="note" style="display: flex; gap: 12px; align-items: center; padding: 14px 16px; border-radius: 12px; background: #FDF3E1; color: #5C3800; font-size: 14px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round"><path d="M7 11h10a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2zM8 11V8a4 4 0 0 1 8 0v3"></path></svg><span>Aluno com notas lançadas não pode ser removido. O histórico é preservado.</span></div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
