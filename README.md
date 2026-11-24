@@ -104,9 +104,15 @@ Os arquivos `.dc.html` são o formato do canvas de design do Claude. Eles depend
 | Página | O que tem |
 | --- | --- |
 | [Linear](https://linear.app/acadflow/document/acadflow-inicio-e-documentacao-9f01545a3125) | Início e documentação do projeto |
+| [Tokens e Acessibilidade](docs/tokens-e-acessibilidade.md) | Paletas light/dark, tipografia, espaçamento e validações |
+| [Rastreabilidade](docs/rastreabilidade.md) | Mapa Design × Web × API e notas de revisão |
+| [Gerência de Configuração](docs/gerencia-de-configuracao.md) | Catálogo de ICs, baselines e auditorias FCA/PCA |
 | [Canvas](design-files/) | Fonte das telas e índice do canvas |
 | [Telas](telas/) | Telas separadas por página, para consulta |
 | [Ícone](icone/) | Ícone em SVG e PNG |
+| [Changelog](CHANGELOG.md) | Histórico de versões do design |
+| [Segurança](SECURITY.md) | Política de reporte |
+| [Licença](LICENSE) | Licença MIT |
 
 ## Repositórios
 

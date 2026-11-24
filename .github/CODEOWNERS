@@ -1,0 +1,10 @@
+# Code Owners — AcadFlow Design
+# Define revisores automáticos por área (Controle de Mudanças / GCS)
+
+*                               @aqu1no1 @OtavioGonzaga
+
+/design-files/                  @aqu1no1
+/telas/                         @aqu1no1
+/icone/                         @aqu1no1
+/docs/                          @Vinicius-Antonio @OtavioGonzaga @aqu1no1
+
