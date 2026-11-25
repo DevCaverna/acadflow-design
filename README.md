@@ -1,18 +1,34 @@
 <div align="center">
   <img src="docs/assets/icon.svg" width="110" alt="Ícone do AcadFlow" />
 
-  # AcadFlow — Design
+# AcadFlow — Design
 
-  Identidade visual, componentes, fluxos e telas do AcadFlow.
+Identidade visual, componentes, fluxos e telas do AcadFlow.
 
-  [Documentação no Linear](https://linear.app/acadflow/document/acadflow-inicio-e-documentacao-9f01545a3125)
+[Documentação no Linear](https://linear.app/acadflow/document/acadflow-inicio-e-documentacao-9f01545a3125)
 </div>
 
 ## Sobre
 
 Este repositório reúne o design do AcadFlow, sistema para organizar disciplinas, atividades e notas. Ele é a referência visual para a [aplicação web](https://github.com/DevCaverna/acadflow-web), nas jornadas de professor e de aluno.
 
+O AcadFlow centraliza prazos e notas que, de outro modo, poderiam ficar dispersos em planilhas e mensagens. O design documenta como essas informações aparecem para cada perfil; não executa a aplicação nem substitui os contratos da API.
+
 **Formatos:** `SVG` · `PNG` · `Canvas (.dc.html)`
+
+## Equipe
+
+DevCaverna é a organização no GitHub; a equipe não tem nome próprio.
+
+- Mauricio Alves de Aquino ([@aqu1no1](https://github.com/aqu1no1)): implementação da maior parte das funcionalidades.
+- Otávio Luiz Gonzaga ([@OtavioGonzaga](https://github.com/OtavioGonzaga)): entrega contínua, releases, deploy e configuração.
+- Vinícius Antônio de Oliveira ([@Vinicius-Antonio](https://github.com/Vinicius-Antonio)): integração contínua e elaboração do relatório técnico.
+
+## Aplicação publicada
+
+Para a atividade **Operação Deploy** (Gerência de Configuração e Manutenção de Software, Engenharia de Software, UTFPR-CP), consulte o [AcadFlow em produção](https://acadflow.duckdns.org/). A versão acadêmica `v1.1.0` é a da [API](https://github.com/DevCaverna/acadflow-api/releases/tag/v1.1.0) e da [Web](https://github.com/DevCaverna/acadflow-web/releases/tag/v1.1.0), não a numeração dos protótipos.
+
+Este repositório não tem pipeline de CI/CD, testes automatizados nem ambiente de execução da aplicação. Para executar, testar ou implantar o sistema, siga os guias da [API](https://github.com/DevCaverna/acadflow-api/blob/main/docs/execucao/README.md) e da [Web](https://github.com/DevCaverna/acadflow-web/blob/main/docs/execucao/README.md).
 
 ## Fluxo
 
@@ -38,15 +54,15 @@ flowchart LR
 
 ## Páginas e quadros
 
-| Página | Quadros |
-| --- | --- |
-| 01 · Capa, ícone e escopo | Main (capa), Icone, LogoMark, **EscopoMVP** |
-| 02 · Fundamentos e componentes | Fundamentos, Componentes, Sidebar, **Avisos**, **TemaEscuro** |
-| 03 · Fluxos e dados | FluxoAuth, FluxoProfessor, FluxoAluno, **ModeloDados** |
-| 04 · Home pública e autenticação | **Landing** (home antes do login), Login, LoginCarregando, LoginErro, Cadastro (pós-MVP, somente `ALUNO`) |
-| 05 · Professor | **ProfHome** (início), ProfPainel (visão geral), ProfDisciplinas, ProfAtividades, ProfNotas, ProfPainelSkeleton, ProfPainelVazio, ProfNovaAtividade, **ProfPainelAvisos**, **ProfAlunos**, **AtividadeAnexos** |
-| 06 · Aluno | **AlunoHome** (início), AlunoPainel (visão geral), AlunoNotas, AlunoPainelSkeleton, AlunoPainelErro, **AlunoPainelAvisos**, **Perfil**, **PerfilFoto** |
-| 07 · Erros e feedback | Erro404, Erro403, Erro500, SemConexao, SessaoExpirada, Feedback |
+| Página                           | Quadros                                                                                                                                                                                                        |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 01 · Capa, ícone e escopo        | Main (capa), Icone, LogoMark, **EscopoMVP**                                                                                                                                                                    |
+| 02 · Fundamentos e componentes   | Fundamentos, Componentes, Sidebar, **Avisos**, **TemaEscuro**                                                                                                                                                  |
+| 03 · Fluxos e dados              | FluxoAuth, FluxoProfessor, FluxoAluno, **ModeloDados**                                                                                                                                                         |
+| 04 · Home pública e autenticação | **Landing** (home antes do login), Login, LoginCarregando, LoginErro, Cadastro (pós-MVP, somente `ALUNO`)                                                                                                      |
+| 05 · Professor                   | **ProfHome** (início), ProfPainel (visão geral), ProfDisciplinas, ProfAtividades, ProfNotas, ProfPainelSkeleton, ProfPainelVazio, ProfNovaAtividade, **ProfPainelAvisos**, **ProfAlunos**, **AtividadeAnexos** |
+| 06 · Aluno                       | **AlunoHome** (início), AlunoPainel (visão geral), AlunoNotas, AlunoPainelSkeleton, AlunoPainelErro, **AlunoPainelAvisos**, **Perfil**, **PerfilFoto**                                                         |
+| 07 · Erros e feedback            | Erro404, Erro403, Erro500, SemConexao, SessaoExpirada, Feedback                                                                                                                                                |
 
 Em negrito, os quadros novos desta versão.
 
@@ -82,37 +98,37 @@ Em negrito, os quadros novos desta versão.
 
 ## Tokens principais
 
-| Token | Valor |
-| --- | --- |
-| Primária (Tinta 600) | `#2E43C8` |
-| Hover / pressionado | `#2436A8` / `#1C2A8C` |
-| Destaque (Âmbar) | `#F2A93B` |
-| Texto / texto secundário | `#151826` / `#5A6072` |
-| Bordas / fundo do app | `#E4E6EE` / `#F5F6FA` |
-| Sucesso / Erro / Recuperação | `#1C7A4A` / `#C0322A` / `#8A5300` |
-| Fontes | Space Grotesk (títulos), Inter (interface), Caveat (só no ícone) |
-| Raios | 6 campo · 10 botão · 14 card · 999 pílula |
+| Token                        | Valor                                                            |
+| ---------------------------- | ---------------------------------------------------------------- |
+| Primária (Tinta 600)         | `#2E43C8`                                                        |
+| Hover / pressionado          | `#2436A8` / `#1C2A8C`                                            |
+| Destaque (Âmbar)             | `#F2A93B`                                                        |
+| Texto / texto secundário     | `#151826` / `#5A6072`                                            |
+| Bordas / fundo do app        | `#E4E6EE` / `#F5F6FA`                                            |
+| Sucesso / Erro / Recuperação | `#1C7A4A` / `#C0322A` / `#8A5300`                                |
+| Fontes                       | Space Grotesk (títulos), Inter (interface), Caveat (só no ícone) |
+| Raios                        | 6 campo · 10 botão · 14 card · 999 pílula                        |
 
 Situação: média ≥ 7,0 Aprovado · 5,0 a 6,9 Recuperação · < 5,0 Reprovado · sem nota lançada = Sem notas. A média é arredondada para uma casa uma única vez, e esse valor define a situação.
 
 ## Observação
 
-Os arquivos `.dc.html` são o formato do canvas de design do Claude. Eles dependem do runtime do canvas e não abrem sozinhos no navegador nem importam direto no Figma. Servem como fonte e referência para os componentes React (estrutura, estilos e textos). O design navegável está no link do canvas.
+Para consultar os ativos, abra os SVGs e PNGs diretamente. Os arquivos `.dc.html` são do canvas de design do Claude: dependem do runtime do canvas, não abrem sozinhos no navegador e não importam direto no Figma. Os protótipos preservam decisões de suas versões e nem sempre refletem o produto publicado. Por exemplo, o quadro antigo de cadastro mostra apenas aluno, enquanto a aplicação permite o cadastro de aluno ou professor.
 
 ## Documentação
 
-| Página | O que tem |
-| --- | --- |
-| [Linear](https://linear.app/acadflow/document/acadflow-inicio-e-documentacao-9f01545a3125) | Início e documentação do projeto |
-| [Tokens e Acessibilidade](docs/tokens-e-acessibilidade.md) | Paletas light/dark, tipografia, espaçamento e validações |
-| [Rastreabilidade](docs/rastreabilidade.md) | Mapa Design × Web × API e notas de revisão |
-| [Gerência de Configuração](docs/gerencia-de-configuracao.md) | Catálogo de ICs, baselines e auditorias FCA/PCA |
-| [Canvas](design-files/) | Fonte das telas e índice do canvas |
-| [Telas](telas/) | Telas separadas por página, para consulta |
-| [Ícone](icone/) | Ícone em SVG e PNG |
-| [Changelog](CHANGELOG.md) | Histórico de versões do design |
-| [Segurança](SECURITY.md) | Política de reporte |
-| [Licença](LICENSE) | Licença MIT |
+| Página                                                                                     | O que tem                                                |
+| ------------------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| [Linear](https://linear.app/acadflow/document/acadflow-inicio-e-documentacao-9f01545a3125) | Início e documentação do projeto                         |
+| [Tokens e Acessibilidade](docs/tokens-e-acessibilidade.md)                                 | Paletas light/dark, tipografia, espaçamento e validações |
+| [Rastreabilidade](docs/rastreabilidade.md)                                                 | Mapa Design × Web × API e notas de revisão               |
+| [Gerência de Configuração](docs/gerencia-de-configuracao.md)                               | Catálogo de ICs, baselines e auditorias FCA/PCA          |
+| [Canvas](design-files/)                                                                    | Fonte das telas e índice do canvas                       |
+| [Telas](telas/)                                                                            | Telas separadas por página, para consulta                |
+| [Ícone](icone/)                                                                            | Ícone em SVG e PNG                                       |
+| [Changelog](CHANGELOG.md)                                                                  | Histórico de versões do design                           |
+| [Segurança](SECURITY.md)                                                                   | Política de reporte                                      |
+| [Licença](LICENSE)                                                                         | Licença MIT                                              |
 
 ## Repositórios
 
